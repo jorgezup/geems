@@ -1,0 +1,26 @@
+extends ../layout.pug
+
+block content
+    section.container.form
+        form(action="/reagentes?_method=PUT" method="POST")
+            .header
+                h3 Editar Reagente
+
+            .fields
+                include fields.pug
+                input(type="hidden", name="id")
+            
+            button.button(type="submit") Atualizar
+            
+        
+        form#form-delete(action="/reagentes?_method=DELETE" method="POST")
+            input(type="hidden", name="id")
+            button.button(type="submit") Deletar
+
+    //- script
+    //-     const formDelete = document.querySelector("#form-delete")
+    //-     formDelete.addEventListener("submit", function (event) 
+    //-         const confirmation = confirm("Deseja Deletar?")
+    //-         if != confirmation 
+    //-             event.preventDefault()
+    //-     )

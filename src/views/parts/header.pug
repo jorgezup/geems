@@ -1,0 +1,22 @@
+header
+    .container
+        a(href="/")
+            .logo
+                img(src="/flask.svg", alt="")
+                h1 GEEMs
+                h2 Controle de Reagentes
+
+        form(action="/reagentes/search" method="GET" class="search")
+            input(
+                type="text", name="filter", placeholder="Buscar por reagente")
+
+        nav.primary
+            ul
+                li
+                    a(href="/cadastrar-reagente")
+                        i.material-icons add
+                        | Novo Reagente
+                li
+                    a(href="/conta")
+                        i.material-icons account_circle
+                        | Minha Conta
