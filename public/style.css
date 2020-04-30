@@ -309,6 +309,13 @@ form .item textarea {
     resize: none;
 }
 
+.form .item.hidden {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+
+}
+
 /* Form Delete */
 .form #form-delete .button {
     background-color: lightcoral;
@@ -384,6 +391,22 @@ form .item textarea {
 .content-table tbody td a i:hover {
     color: black;
 }
+
+.content-table thead td button {
+    background-color: unset;
+}
+
+.content-table thead td button i {
+    font-size: 1.4rem;
+    color: white;
+}
+
+.content-table thead td button i:hover {
+    color: lightgray;
+}
+
+
+
 
 .container h1.title {
     margin-top: 25px;

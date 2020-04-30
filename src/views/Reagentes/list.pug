@@ -3,61 +3,57 @@ extends ../layout.pug
 block content
     .container
         h1.title  Listagem dos Reagentes
+        //- form(action="/buscar-reagente", method="GET")
+        //-     input(type="text", name="filter", placeholder="buscar reagente")
+        //-     button.button(type="submit") Buscar
         table.content-table
             thead
                 tr
                     td Nome
+                        button.asc( value="nome_oficial" onclick="verificaOrder(this)")
+                            i.material-icons keyboard_arrow_down
+                        button( value="nome_oficial" onclick="verificaOrder(this)")
+                            i.material-icons keyboard_arrow_up
+                            
                     td Marca
+                        button.asc( value="marca" onclick="verificaOrder(this)")
+                            i.material-icons keyboard_arrow_down
+                        button( value="marca" onclick="verificaOrder(this)")
+                            i.material-icons keyboard_arrow_up
+
                     td Controlado
+                        button.asc( value="controlado" onclick="verificaOrder(this)")
+                            i.material-icons keyboard_arrow_down
+                        button( value="controlado" onclick="verificaOrder(this)")
+                            i.material-icons keyboard_arrow_up
+
                     td Quantidade
+                        button.asc( value="quantidade" onclick="verificaOrder(this)")
+                            i.material-icons keyboard_arrow_down
+                        button( value="quantidade" onclick="verificaOrder(this)")
+                            i.material-icons keyboard_arrow_up
+
+
                     td Ação
+                    
             tbody
+            each reagente in reagentes
                 tr
-                    td Isopropílico
-                    td adssdas
-                    td Não
-                    td 2L
+                    td= reagente.nome_oficial
+                    td= reagente.marca
+                    td= reagente.controlado
+                    td= reagente.quantidade
                     td
-                        a(href="/show") Visualizar
+                        a(href=`/buscar-reagente/${reagente.id}`) Visualizar
                             i.material-icons search
-                        a(href="/registrar-consumo") Consumo
+                        a(href=`/registrar-consumo/${reagente.id}`) Consumo
                             i.material-icons assignment
-                tr
-                    td Isopropílico
-                    td adssdas
-                    td Não
-                    td 2L
-                    td
-                        a(href="/show") Visualizar
-                            i.material-icons search
-                        a(href="/registrar-consumo") Consumo
-                            i.material-icons assignment
-                tr
-                    td Isopropílico
-                    td adssdas
-                    td Não
-                    td 2L
-                    td
-                        a(href="/show") Visualizar
-                            i.material-icons search
-                        a(href="/registrar-consumo") Consumo
-                            i.material-icons assignment
-                tr
-                    td Isopropílico
-                    td adssdas
-                    td Não
-                    td 2L
-                    td
-                        a(href="/show") Visualizar
-                            i.material-icons search
-                        a(href="/registrar-consumo") Consumo
-                            i.material-icons assignment
-
-
-
-    //- div.table-container (role="table" aria-label="Destinations")
-    //-     div.flex-table.header" role="rowgroup">
-    //-     div.flex-row.first" role="columnheader">Nome
-    //-     div.flex-row" role="columnheader">Fórmula
-    //-     div.flex-row" role="columnheader">Controlado
-    //-     div.flex-row" role="columnheader">Quantidade
+               
+    script.
+        function verificaOrder(event) {
+            if (event.classList.contains('asc')){
+                location.href = `/reagentes/search2?${event.value}=asc`
+            } else {
+                location.href = `/reagentes/search2?${event.value}=desc`
+            }
+        }

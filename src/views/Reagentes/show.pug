@@ -1,5 +1,22 @@
 extends ../layout.pug
 
 block content
-    section.reagente-single.container
-    
+    section.container.form
+        .header
+            h3 Reagente
+
+        .fields
+            div.item
+                div Nome Comum:
+                    div=reagente.nome_comum
+                div Nome Oficial:
+                    div=reagente.nome_oficial
+                div Fórmula Molecular
+                    div=reagente.formula_molecular
+                div Marca
+                    div=reagente.marca
+                div Lote
+                    div=reagente.lote
+                div Validade
+                    div=reagente.validade
+        a.button(href=`/editar-reagente/${reagente.id}`) Editar

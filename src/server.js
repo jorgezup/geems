@@ -1,6 +1,11 @@
 /* Pacotes a serem utilizados */
 const express = require('express')
 const path = require('path')
+const methodOverride = require('method-override')
+
+
+/* Importando a database */
+require('./database')
 
 /* Arquivo a ser utilizado */
 const routes = require('./routes/routes')
@@ -16,6 +21,7 @@ app.set('view engine', 'pug')
 app.use(express.urlencoded({ extended: true }))
 /* Pasta public */
 app.use(express.static('public'))
+app.use(methodOverride('_method')) /* sobrescrever o método, para utilizar o PUT (precisa instalar npm install method-override) */
 
 /* Caminho das rotas */
 app.use(routes)

@@ -2,12 +2,12 @@ extends ../layout.pug
 
 block content
     section.container.form
-        form(action="/reagentes?_method=PUT" method="POST")
+        form(action="/editar-reagente?_method=PUT" method="POST")
             .header
                 h3 Editar Reagente
 
             .fields
-                include fields.pug
+                include ./fields
                 input(type="hidden", name="id")
             
             button.button(type="submit") Atualizar
