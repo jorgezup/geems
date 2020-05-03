@@ -2,7 +2,12 @@
 
 :root {
     --primary-color: #0088B7;
-    --secondar-color: ;
+
+    --red-color: #FC5F61;
+    --red-color-hover: rgb(223, 74, 76);
+
+    --yellow-color: #F7D360;
+    --yellow-color-hover: #DAB53B;
 }
 
 * {
@@ -23,6 +28,7 @@ html, body {
 html {
     /* a cada 1rem será considerado 10px */
     font-size: 62.5%;
+    
 }
 
 body {
@@ -180,7 +186,7 @@ nav.primary ul li a i{
     width: 100%;
     max-width: 700px;
     
-    margin: 28vh auto;
+    margin: 20vh auto;
 
     display: flex;
 }
@@ -246,12 +252,12 @@ form .item {
 }
 
 form .item > div:nth-child(1) {
-    color: #777;
+    color: #999999;
     text-transform: uppercase;
     font-size: 1.4rem;
     font-weight: bold;
 
-    margin-bottom: 0.8rem;
+    margin-bottom: .8rem;
 }
 
 form .item input[type="text"],
@@ -262,7 +268,7 @@ form .item select {
     width: 100%;
 
     padding: .8rem 1.6rem;
-    margin-top: .4rem;
+    margin-top: .8rem;
 
     box-shadow: 2px 2px 2px -4px rgba(60, 60, 60, 0.8);
 
@@ -270,6 +276,7 @@ form .item select {
     border-radius: .4rem;
     
     font-size: 1.6rem;
+    color: #444444;
 }
 
 form .item input[type="date"] {
@@ -278,15 +285,31 @@ form .item input[type="date"] {
 
 form .item div > span {
     margin-top: .4rem;
+
     display: flex;
+
     align-self: center;
     justify-self: center;
+
+    text-transform: initial;
+
+    color: #444444;
+    font-size: 1.4rem;
+    letter-spacing: .8px;
 }
 
 form .item div > span input{
     margin-right: .4rem;
     align-self: center;
     justify-self: center;
+}
+
+form .item div.radio {
+    display: flex;
+}
+
+form .item div.radio span:nth-child(1) {
+    margin-right: 4rem;
 }
 
 form .item select {
@@ -318,11 +341,11 @@ form .item textarea {
 
 /* Form Delete */
 .form #form-delete .button {
-    background-color: lightcoral;
+    background-color: var(--red-color);
 }
 
 .form #form-delete .button:hover {
-    background-color: #d13434;
+    background-color: var(--red-color-hover);
 }
 
 
@@ -405,9 +428,6 @@ form .item textarea {
     color: lightgray;
 }
 
-
-
-
 .container h1.title {
     margin-top: 25px;
 
@@ -415,4 +435,71 @@ form .item textarea {
     font-weight: bold;
     font-size: 2.4rem;
     letter-spacing: 1px;;
+}
+
+/* Show Page */
+section.container.form {
+    position: relative;
+}
+
+.fields-show .item > div:nth-child(1) {
+    color: #999999;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: bold;
+    
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #efefef;
+}
+
+.fields-show .item > div:nth-child(1) >div {
+    color: black;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: bold;
+    
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+div.button-show {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+div.button-show a:nth-child(1) {
+    margin-right: 10px;
+}
+
+.button#consumo {
+    background-color: var(--yellow-color);
+}
+
+.button#consumo:hover {
+    background-color: var(--yellow-color);
+}
+
+
+.item.controlado {
+    position: absolute;
+    top: 3rem;
+    right: 8rem;
+
+    display: inline-block;
+
+    background-color: #FC5F61;
+
+    border-radius: 8px;
+}
+
+.item.controlado > div{
+    color: white;
+
+    padding: 0.8rem 1.6rem;
+
+    font-size: 1.4rem;
+    font-weight: bold;
+
+    text-transform: uppercase;
 }

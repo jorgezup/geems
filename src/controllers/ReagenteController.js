@@ -3,15 +3,31 @@ const Reagente = require('../models/Reagente')
 
 module.exports = {
     async index(req, res){
-        const { filter }  = req.query
+        let { filter, page, limit }  = req.query
+
+        page = page || 1
+        limit = limit || 5
+        let offset = limit * (page - 1)
 
         if (filter) {
+            let total = await Reagente.count({
+                where: {
+                    [Op.or]: [{ 
+                        nome_oficial: {
+                            [Op.iLike]: `%${filter}%`
+                        }
+                    }, { 
+                        nome_comum: {
+                            [Op.iLike]: `%${filter}%`
+                        } 
+                    }],  
+                }
+            })
+
             const reagentes = await Reagente.findAll({
                 // attributes: ['nome_oficial', 'marca', 'controlado', 'quantidade', 'validade'],
                 attributes: [
-                    'id', 'nome_oficial', 'marca', 'controlado', 'quantidade',
-                    [fn('TO_CHAR', col('validade'), 'DD-MM-YYYY'), 'validade']
-                ],
+                    'id', 'nome_oficial', 'marca', 'controlado', 'quantidade'],
                 where: {
                     [Op.or]: [{ 
                         nome_oficial: {
@@ -23,23 +39,43 @@ module.exports = {
                         } 
                     }],  
                 }, 
+                limit: limit,
+                offset: offset
                 // order:[['nome_oficial', 'DESC']],
             })
 
-            console.log(reagentes)
-
-            return res.render('Reagentes/list.pug', { reagentes })
+            let mathTotal = total == undefined ? 0 : Math.ceil(total/limit)
+            
+            const pagination = {
+                total: mathTotal,
+                page
+            }
+            
+            console.log(pagination)
+            return res.render('Reagentes/list.pug', { reagentes, pagination, filter })
         }
 
+        const total = await Reagente.count()
+
         const reagentes = await Reagente.findAll({
-            attributes: ['id', 'nome_oficial', 'marca', 'controlado', 'quantidade']
+            attributes: ['id', 'nome_oficial', 'marca', 'controlado', 'quantidade'],
+            limit: limit,
+            offset: offset,
+            group: 'id',
         })
 
-        return res.render('Reagentes/list.pug', { reagentes })
+        let mathTotal = total == undefined ? 0 : Math.ceil(total/limit)
+            
+        const pagination = {
+            total: mathTotal,
+            page
+        }
+        
+        console.log(pagination)
+        return res.render('Reagentes/list.pug', { reagentes, pagination })
     },
     async orderByName(req, res){
         
-        // console.log('oi')
         const filtro  = Object.keys(req.query)[0]
         const order = Object.values(req.query)[0]
         console.log(filtro)
@@ -57,7 +93,21 @@ module.exports = {
     async find(req, res) {
         const { id } = req.params
 
-        const reagente = await Reagente.findByPk(id)
+        const reagente = await Reagente.findByPk(id,
+            {
+                attributes: [
+                    'id',
+                    'nome_oficial',
+                    'nome_comum',
+                    'formula_molecular',
+                    'marca',
+                    'lote',
+                    'controlado',
+                    'orgao',
+                    [fn('TO_CHAR', col('validade'), 'DD-MM-YYYY'), 'validade']
+                ]
+            }
+        )
         console.log(reagente)
 
         return res.render('Reagentes/show.pug', { reagente })
@@ -105,8 +155,24 @@ module.exports = {
 
         const reagente = await Reagente.findByPk(id,
             {
-                attributes: ['nome_oficial', [fn('TO_CHAR', col('validade'), 'YYYY-MM-DD'), 'validade']]
-            })
+                attributes: [
+                    'id',
+                    'nome_oficial',
+                    'nome_comum',
+                    'formula_molecular',
+                    'marca',
+                    'lote',
+                    [fn('TO_CHAR', col('validade'), 'YYYY-MM-DD'), 'validade'],
+                    'estado',
+                    'quantidade',
+                    'localizacao',
+                    'incompatibilidade',
+                    'controlado',
+                    'orgao',
+                    'info_adicionais'
+                ]
+            }
+        )
 
         return res.render('Reagentes/edit', {reagente})
     },

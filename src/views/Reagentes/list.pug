@@ -48,7 +48,9 @@ block content
                             i.material-icons search
                         a(href=`/registrar-consumo/${reagente.id}`) Consumo
                             i.material-icons assignment
-               
+    
+        div.pagination(data-page=pagination.page, data-total=pagination.total)        
+
     script.
         function verificaOrder(event) {
             if (event.classList.contains('asc')){

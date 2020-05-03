@@ -4,19 +4,36 @@ block content
     section.container.form
         .header
             h3 Reagente
+            if reagente.controlado == 'sim'
+                div.item.controlado
+                    div Controlado
 
-        .fields
+        .fields-show
             div.item
-                div Nome Comum:
+                div Nome Comum
                     div=reagente.nome_comum
-                div Nome Oficial:
+            div.item
+                div Nome Oficial
                     div=reagente.nome_oficial
+            div.item
                 div Fórmula Molecular
                     div=reagente.formula_molecular
+            div.item
                 div Marca
                     div=reagente.marca
+            div.item
                 div Lote
                     div=reagente.lote
+            div.item
                 div Validade
                     div=reagente.validade
-        a.button(href=`/editar-reagente/${reagente.id}`) Editar
+            if reagente.orgao != ""
+                div.item 
+                    div Órgão
+                        div=reagente.orgao
+            div.button-show
+                a.button#consumo(href=`/editar-reagente/${reagente.id}`) Consumo
+                a.button(href=`/editar-reagente/${reagente.id}`) Editar
+
+
+        

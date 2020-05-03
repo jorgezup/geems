@@ -17,10 +17,12 @@ block content
             input(type="hidden", name="id")
             button.button(type="submit") Deletar
 
-    //- script
-    //-     const formDelete = document.querySelector("#form-delete")
-    //-     formDelete.addEventListener("submit", function (event) 
-    //-         const confirmation = confirm("Deseja Deletar?")
-    //-         if != confirmation 
-    //-             event.preventDefault()
-    //-     )
+    script.
+        const oi = 'oi'
+        console.log(oi)
+        const formDelete = document.querySelector("#form-delete")
+        formDelete.addEventListener("submit", function (event) {
+            const confirmation = confirm("Deseja Deletar?")
+            if (!confirmation )
+                event.preventDefault()
+        }) 

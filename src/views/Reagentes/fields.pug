@@ -1,84 +1,84 @@
 if reagente
     input(type="hidden", name="id" value=reagente.id)
     div.item
-        div Nome Comum:
+        div Nome Comum
             div
                 input(type="text", name="nome_comum" value=reagente.nome_comum)
     div.item        
-        div Nome Oficial:
+        div Nome Oficial
             div
                 input(type="text", name="nome_oficial" value=reagente.nome_oficial)
     div.item
-        div Fórmula Molecular:
+        div Fórmula Molecular
             div
                 input(type="text", name="formula_molecular" value=reagente.formula_molecular)
     div.item            
-        div Marca:
+        div Marca
             div
                 input(type="text", name="marca" value=reagente.marca)
     div.item
-        div Lote:
+        div Lote
             div
                 input(type="text", name="lote" value=reagente.lote)
     div.item
-        div Validade:
+        div Validade
             div
                 input(type="date", name="validade" value=reagente.validade)
     div.item
         div Estado
-            div
-            if reagente.estado == 'sólido'
-                span
-                    input(type="radio", name="estado" value="sólido" checked) 
-                    |  Sólido (g)
+            div.radio
+                if reagente.estado == 'sólido'
+                    span
+                        input(type="radio", name="estado" value="sólido" checked) 
+                        |  Sólido (grama)
 
-                span
-                    input(type="radio", name="estado" value="líquido" ) 
-                    | Líquido (L)
-            else
-                span
-                    input(type="radio", name="estado" value="sólido" ) 
-                    |  Sólido (g)
+                    span
+                        input(type="radio", name="estado" value="líquido" ) 
+                        | Líquido (Litro)
+                else
+                    span
+                        input(type="radio", name="estado" value="sólido" ) 
+                        |  Sólido (grama)
 
-                span
-                    input(type="radio", name="estado" value="líquido" checked) 
-                    | Líquido (L)
+                    span
+                        input(type="radio", name="estado" value="líquido" checked) 
+                        | Líquido (Litro)
     div.item
-        div Quantidade:
+        div Quantidade
             div
                 input(type="number", name="quantidade" value=reagente.quantidade)
     div.item
-        div Localização:
+        div Localização
             div
                 input(type="text", name="localizacao" value=reagente.localizacao)
     div.item
-        div Incompatibilidade:
+        div Incompatibilidade
             div
                 input(type="text", name="incompatibilidade" value=reagente.incompatibilidade)
     div.item
         div Controlado
-            div
-            if reagente.controlado == 'sim'
-                span
-                    input(type="radio", name="controlado" id="sim" value="sim" checked)
-                    |  Sim
-                span
-                    input(type="radio", name="controlado" id="não" value="não")
-                    | Não
-                div#orgao.item.hidden
-                    div 
-                        select(name="orgao")
-                            if reagente.orgao == 'Exército'
-                                option(value="Exército") Exército
-                            else
-                                option(value="Polícia Federal") Polícia Federal
-            else 
-                span
-                    input(type="radio", name="controlado" id="sim" value="sim" )
-                    |  Sim
-                span
-                    input(type="radio", name="controlado" id="não" value="não" checked)
-                    | Não
+            div.radio
+                if reagente.controlado == 'sim'
+                    span
+                        input(type="radio", name="controlado" id="sim" value="sim" checked)
+                        |  Sim
+                    span
+                        input(type="radio", name="controlado" id="não" value="não")
+                        | Não
+                    div#orgao.item.hidden
+                        div 
+                            select(name="orgao")
+                                if reagente.orgao == 'Exército'
+                                    option(value="Exército") Exército
+                                else
+                                    option(value="Polícia Federal") Polícia Federal
+                else 
+                    span
+                        input(type="radio", name="controlado" id="sim" value="sim" )
+                        |  Sim
+                    span
+                        input(type="radio", name="controlado" id="não" value="não" checked)
+                        | Não
 
 
     div.item
@@ -87,54 +87,58 @@ if reagente
                 textarea(name="info_adicionais")= reagente.info_adicionais 
 else
     div.item
-        div Nome Comum:
+        div Nome Comum
             div
                 input(type="text", name="nome_comum")
     div.item        
-        div Nome Oficial:
+        div Nome Oficial
             div
                 input(type="text", name="nome_oficial")
     div.item
-        div Fórmula Molecular:
+        div Fórmula Molecular
             div
                 input(type="text", name="formula_molecular")
     div.item            
-        div Marca:
+        div Marca
             div
                 input(type="text", name="marca")
     div.item
-        div Lote:
+        div Lote
             div
                 input(type="text", name="lote")
     div.item
-        div Validade:
+        div Validade
             div
                 input(type="date", name="validade")
     div.item
         div Estado
-            div
+            div.radio
                 span
                     input(type="radio", name="estado" value="sólido" ) 
-                    |  Sólido (g)
+                    |  Sólido (grama)
 
                 span
                     input(type="radio", name="estado" value="líquido" checked) 
-                    | Líquido (L)
+                    | Líquido (Litro)
     div.item
-        div Quantidade:
+        div Quantidade
             div
                 input(type="number", name="quantidade")
     div.item
-        div Localização:
+        div Localização
             div
-                input(type="text", name="localizacao")
+                select(name="localizacao" required)
+                    option()
+                    option(value="Armário 1") Armário 1
+                    option(value="Armário 2") Armário 2
+                    option(value="Sala do Professor") Sala do Professor
     div.item
         div Incompatibilidade:
             div
                 input(type="text", name="incompatibilidade")
     div.item
         div Controlado
-            div
+            div.radio
                 span
                     input(type="radio", name="controlado" id="sim" value="sim" ) 
                     |  Sim
@@ -144,7 +148,7 @@ else
     div#orgao.item.hidden
         div 
             select(name="orgao" required)
-                option(value="")
+                option()
                 option(value="Exército") Exército
                 option(value="Polícia Federal") Polícia Federal
 
@@ -166,26 +170,3 @@ script.
                 divOrgao.classList.add('hidden')
         })
     })
-    //- const controlado = document.getElementsById('sim').checked
-    //- console.log(controlado)
-    //- if controlado {
-    //-     alert('oi')
-    //- }
-    //- controlado.forEach((control) => {
-    //-     console.log(control)
-    //-     if (control.checked == 'sim')
-    //-         alert('sim')
-    //- })
-
-//- Nome comum:
-//- Nome oficial:
-//- Fórmula molecular:
-//- Marca:
-//- Lote:
-//- Validade
-//- Quantidade:
-//- Localização:
-//- Incompatibilidade:
-//- Controlado: Não Sim: Exercito / PF
-//- Informações adicionais:
-//- Data da atualização:
