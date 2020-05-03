@@ -1,0 +1,66 @@
+extends ../layout.pug
+
+block content
+    section.container.form
+        .header
+            h3 Reagente
+            if reagente.controlado == 'sim'
+                div.item.controlado
+                    div Controlado
+
+        .fields-show
+            div.item
+                div Nome Comum
+                    div=reagente.nome_comum
+            //- div.item
+            //-     div Nome Oficial
+            //-         div=reagente.nome_oficial
+            //- div.item
+            //-     div Fórmula Molecular
+            //-         div=reagente.formula_molecular
+            //- div.item
+            //-     div Marca
+            //-         div=reagente.marca
+            //- div.item
+            //-     div Lote
+            //-         div=reagente.lote
+            //- div.item
+            //-     div Validade
+            //-         div=reagente.validade
+            //- if reagente.orgao != ""
+            //-     div.item 
+            //-         div Órgão
+            //-             div=reagente.orgao
+            //- div.item 
+            //-     div Estado
+            //-         div=reagente.estado
+            div.item
+                div Quantidade
+                    div#quantidade=reagente.quantidade
+            div.item 
+                div Consumo
+                    input#registrar-consumo(type="number", name="consumo", placeholder="Insira o valor do consumo do reagente")
+                    
+        a.button#consumo(href=`/`) Cadastrar Consumo
+
+    script.
+        const divQuantidade = document.querySelector('#quantidade')
+        const inputConsumo = document.querySelector('div.item input')
+        const button = document.querySelector('#consumo')
+        console.log(button)
+
+        button.addEventListener('click', (event) => {
+            if (inputConsumo.value == "" || inputConsumo.value < 0 || inputConsumo.value == 0){
+                alert("Por favor, insira o valor do Consumo do Reagente.")
+                event.preventDefault()
+            } 
+            else if (inputConsumo.value > divQuantidade.textContent) {
+                alert("O valor do consumo não pode ser maior do que a quantidade de Reagente disponível.")
+                event.preventDefault()
+            }
+        })
+        console.log(inputConsumo.value)
+        console.log(divQuantidade.textContent)
+
+
+        

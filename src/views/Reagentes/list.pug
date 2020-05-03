@@ -9,7 +9,7 @@ block content
         table.content-table
             thead
                 tr
-                    td Nome
+                    td Nome Oficial
                         button.asc( value="nome_oficial" onclick="verificaOrder(this)")
                             i.material-icons keyboard_arrow_down
                         button( value="nome_oficial" onclick="verificaOrder(this)")
@@ -49,13 +49,13 @@ block content
                         a(href=`/registrar-consumo/${reagente.id}`) Consumo
                             i.material-icons assignment
     
-        div.pagination(data-page=pagination.page, data-total=pagination.total)        
+        div.pagination(data-page=pagination.page, data-total=pagination.total, data-filter=filter, data-column=column, data-order=order)        
 
     script.
         function verificaOrder(event) {
             if (event.classList.contains('asc')){
-                location.href = `/reagentes/search2?${event.value}=asc`
+                location.href = `/reagentes/search?column=${event.value}&order=asc`
             } else {
-                location.href = `/reagentes/search2?${event.value}=desc`
+                location.href = `/reagentes/search?column=${event.value}&order=desc`
             }
         }

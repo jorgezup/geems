@@ -264,7 +264,8 @@ form .item input[type="text"],
 form .item input[type="number"],
 form .item input[type="date"],
 form .item textarea,
-form .item select {
+form .item select,
+input#registrar-consumo {
     width: 100%;
 
     padding: .8rem 1.6rem;
@@ -502,4 +503,26 @@ div.button-show a:nth-child(1) {
     font-weight: bold;
 
     text-transform: uppercase;
+}
+
+/* Pagination */
+section.container.form {
+    /* display: grid; */
+    /* grid-template-columns: 64px 1fr 16px; */
+}
+
+div.pagination {
+    text-align: center;
+}
+
+.pagination a,
+.pagination span {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-right: 1.6rem;
+}
+
+.pagination a:hover {
+    filter: brightness(0.3);
+    border-bottom: 1px solid var(--primary-color);
 }

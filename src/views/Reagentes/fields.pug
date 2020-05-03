@@ -65,13 +65,6 @@ if reagente
                     span
                         input(type="radio", name="controlado" id="não" value="não")
                         | Não
-                    div#orgao.item.hidden
-                        div 
-                            select(name="orgao")
-                                if reagente.orgao == 'Exército'
-                                    option(value="Exército") Exército
-                                else
-                                    option(value="Polícia Federal") Polícia Federal
                 else 
                     span
                         input(type="radio", name="controlado" id="sim" value="sim" )
@@ -79,6 +72,19 @@ if reagente
                     span
                         input(type="radio", name="controlado" id="não" value="não" checked)
                         | Não
+
+    if reagente.controlado == 'não'
+        div#orgao.item.hidden
+            div Órgão
+                select(name="orgao")
+                    option(value="Exército") Exército
+                    option(value="Polícia Federal") Polícia Federal
+    else
+        div#orgao.item
+            div Órgão
+                select(name="orgao" required)
+                    option(value="Exército") Exército
+                    option(value="Polícia Federal") Polícia Federal
 
 
     div.item
@@ -146,7 +152,7 @@ else
                     input(type="radio", name="controlado" id="não" value="não" checked) 
                     | Não
     div#orgao.item.hidden
-        div 
+        div Órgão
             select(name="orgao" required)
                 option()
                 option(value="Exército") Exército

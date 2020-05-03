@@ -3,12 +3,15 @@ const Reagente = require('../models/Reagente')
 
 module.exports = {
     async index(req, res){
-        let { filter, page, limit }  = req.query
-
+        let { column, order, filter, page, limit }  = req.query
+        console.log(req.query)
         page = page || 1
-        limit = limit || 5
+        limit = limit || 8
         let offset = limit * (page - 1)
 
+        let total = await Reagente.count()
+
+        
         if (filter) {
             let total = await Reagente.count({
                 where: {
@@ -54,41 +57,39 @@ module.exports = {
             console.log(pagination)
             return res.render('Reagentes/list.pug', { reagentes, pagination, filter })
         }
-
-        const total = await Reagente.count()
-
-        const reagentes = await Reagente.findAll({
-            attributes: ['id', 'nome_oficial', 'marca', 'controlado', 'quantidade'],
-            limit: limit,
-            offset: offset,
-            group: 'id',
-        })
-
-        let mathTotal = total == undefined ? 0 : Math.ceil(total/limit)
-            
-        const pagination = {
-            total: mathTotal,
-            page
-        }
-        
-        console.log(pagination)
-        return res.render('Reagentes/list.pug', { reagentes, pagination })
-    },
-    async orderByName(req, res){
-        
-        const filtro  = Object.keys(req.query)[0]
-        const order = Object.values(req.query)[0]
-        console.log(filtro)
-        console.log(order)
-        if (filtro) {
+        else if (order) {
             const reagentes = await Reagente.findAll({
                 attributes: ['id', 'nome_oficial', 'marca', 'controlado', 'quantidade'],
-                order:[ [filtro, order]]
+                limit: limit,
+                offset: offset,
+                order:[ [column, order]]
             })
-            return res.render('Reagentes/list.pug', { reagentes })
-
+            let mathTotal = total == undefined ? 0 : Math.ceil(total/limit)
+            
+            const pagination = {
+                total: mathTotal,
+                page
+            }
+            
+            return res.render('Reagentes/list.pug', { reagentes, pagination, filter, order, column })
         }
-
+        else {
+            const reagentes = await Reagente.findAll({
+                attributes: ['id', 'nome_oficial', 'marca', 'controlado', 'quantidade'],
+                limit: limit,
+                offset: offset,
+                group: 'id',
+            })
+            
+            let mathTotal = total == undefined ? 0 : Math.ceil(total/limit)
+            
+            const pagination = {
+                total: mathTotal,
+                page
+            }
+            
+            return res.render('Reagentes/list.pug', { reagentes, pagination, filter, order, column })
+        }        
     },
     async find(req, res) {
         const { id } = req.params
@@ -108,8 +109,6 @@ module.exports = {
                 ]
             }
         )
-        console.log(reagente)
-
         return res.render('Reagentes/show.pug', { reagente })
 
     },
@@ -222,5 +221,39 @@ module.exports = {
             
         )
         return res.redirect('/')
+    },
+    async delete(req, res) {
+        const { id } = req.body
+        console.log('oi')
+        console.log(req.body.id)
+        await Reagente.destroy({
+            where: {
+                id: req.body.id
+            }
+        })
+
+        return res.redirect('/')
+    },
+    async consumo(req, res) {
+        const { id } = req.params
+        const reagente = await Reagente.findByPk(id,
+            {
+                attributes: [
+                    'id',
+                    'nome_oficial',
+                    'nome_comum',
+                    'formula_molecular',
+                    'marca',
+                    'lote',
+                    'controlado',
+                    'orgao',
+                    'estado',
+                    'quantidade',
+                    [fn('TO_CHAR', col('validade'), 'DD-MM-YYYY'), 'validade']
+                ]
+            }
+        )
+        console.log(reagente)
+        return res.render('Reagentes/consumo.pug', { reagente })
     }
 }
