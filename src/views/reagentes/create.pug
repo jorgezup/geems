@@ -1,0 +1,12 @@
+extends ../layout.pug
+
+block content
+    section.container.form
+        form(action="/reagentes" method="POST")
+            .header
+                h3 Cadastrar Reagente
+
+            .fields
+                include fields.pug
+            
+            button.button(type='submit' onclick="Validate.allFields(event)") Salvar

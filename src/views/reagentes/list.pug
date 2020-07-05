@@ -2,7 +2,8 @@ extends ../layout.pug
 
 block content
     .container
-        h1.title  Listagem dos Reagentes
+        .title
+            h2 Listagem dos Reagentes
         //- form(action="/buscar-reagente", method="GET")
         //-     input(type="text", name="filter", placeholder="buscar reagente")
         //-     button.button(type="submit") Buscar
@@ -38,16 +39,31 @@ block content
                     
             tbody
             each reagente in reagentes
-                tr
-                    td= reagente.nome_oficial
-                    td= reagente.marca
-                    td= reagente.controlado
-                    td= reagente.quantidade
-                    td
-                        a(href=`/buscar-reagente/${reagente.id}`) Visualizar
-                            i.material-icons search
-                        a(href=`/registrar-consumo/${reagente.id}`) Consumo
-                            i.material-icons assignment
+                if reagente.quantidade_final == 0
+                    tr.indisponivel
+                        td= reagente.nome_oficial
+                        td= reagente.marca
+                        td= reagente.controlado
+                        td= reagente.quantidade_final
+                        
+                        td
+                            a(href=`/buscar-reagente/${reagente.id}`) Visualizar
+                                i.material-icons search
+                            a(href=`/reagentes/${reagente.id}/consumo`) Consumo
+                                i.material-icons assignment
+                else
+                    tr
+                        td= reagente.nome_oficial
+                        td= reagente.marca
+                        td= reagente.controlado
+                        td= reagente.quantidade_final
+                        
+                        td
+                            a(href=`/buscar-reagente/${reagente.id}`) Visualizar
+                                i.material-icons search
+                            a(href=`/reagentes/${reagente.id}/consumo`) Consumo
+                                i.material-icons assignment
+
     
         div.pagination(data-page=pagination.page, data-total=pagination.total, data-filter=filter, data-column=column, data-order=order)        
 

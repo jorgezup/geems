@@ -1,22 +1,24 @@
 header
-    .container
-        a(href="/")
-            .logo
+    .container-header.site
+        .logo-header(onclick="window.location.href='/'")
+            .imagem-header
                 img(src="/flask.svg", alt="")
-                h1 GEEMs
-                h2 Controle de Reagentes
+            .titulo-header
+                h2 GEEMs
+                p Controle de Reagentes
 
         form(action="/reagentes/search" method="GET" class="search")
             input(
                 type="text", name="filter", placeholder="Buscar por reagente")
 
-        nav.primary
-            ul
-                li
-                    a(href="/cadastrar-reagente")
-                        i.material-icons add
-                        | Novo Reagente
-                li
-                    a(href="/conta")
-                        i.material-icons account_circle
-                        | Minha Conta
+        .menu-header
+            .itens
+                a(href="/reagentes")
+                    i.material-icons add
+                    | Novo Reagente
+            .itens
+                a(href="/conta")
+                    i.material-icons account_circle
+                    | Minha Conta
+                form(action="/logout", method="post") 
+                    button Sair

@@ -46,7 +46,7 @@ if reagente
     div.item
         div Quantidade
             div
-                input(type="number", name="quantidade" value=reagente.quantidade)
+                input(type="number", name="quantidade" value=reagente.quantidade_final)
     div.item
         div Localização
             div
@@ -95,11 +95,11 @@ else
     div.item
         div Nome Comum
             div
-                input(type="text", name="nome_comum")
+                input.obrigatorio(type="text", name="nome_comum")
     div.item        
         div Nome Oficial
             div
-                input(type="text", name="nome_oficial")
+                input.obrigatorio(type="text", name="nome_oficial")
     div.item
         div Fórmula Molecular
             div
@@ -107,7 +107,7 @@ else
     div.item            
         div Marca
             div
-                input(type="text", name="marca")
+                input.obrigatorio(type="text", name="marca")
     div.item
         div Lote
             div
@@ -115,7 +115,7 @@ else
     div.item
         div Validade
             div
-                input(type="date", name="validade")
+                input.obrigatorio(type="date", name="validade")
     div.item
         div Estado
             div.radio
@@ -133,7 +133,7 @@ else
     div.item
         div Localização
             div
-                select(name="localizacao" required)
+                select.obrigatorio(name="localizacao")
                     option()
                     option(value="Armário 1") Armário 1
                     option(value="Armário 2") Armário 2
@@ -146,14 +146,14 @@ else
         div Controlado
             div.radio
                 span
-                    input(type="radio", name="controlado" id="sim" value="sim" ) 
+                    input(type="radio", name="controlado" id="sim" value="sim" onchange="Validate.controlado(event)" ) 
                     |  Sim
                 span
-                    input(type="radio", name="controlado" id="não" value="não" checked) 
+                    input(type="radio", name="controlado" id="não" value="não" onchange="Validate.controlado(event)" checked) 
                     | Não
     div#orgao.item.hidden
         div Órgão
-            select(name="orgao" required)
+            select(name="orgao")
                 option()
                 option(value="Exército") Exército
                 option(value="Polícia Federal") Polícia Federal
@@ -163,16 +163,3 @@ else
         div Informações Adicionais
             div
                 textarea(name="info_adicionais")
-
-
-script.
-    const divControlado = document.getElementsByName('controlado')
-    const divOrgao = document.querySelector('#orgao')
-    divControlado.forEach(control => {
-        control.addEventListener('click', function(){
-            if (control.value == 'sim')
-                divOrgao.classList.remove('hidden')
-            else
-                divOrgao.classList.add('hidden')
-        })
-    })

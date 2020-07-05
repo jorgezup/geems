@@ -1,0 +1,14 @@
+extends ../../layout.pug
+
+block content
+    section.container.form
+        form(action="/user?_method=PUT" method="POST")
+            .header
+                h3 Meus Dados
+
+            .fields
+                include ./fields
+                input(type="hidden", name="id")
+            
+            button.button(type="submit") Atualizar
+            

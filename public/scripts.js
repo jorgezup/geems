@@ -64,3 +64,69 @@ const pagination = document.querySelector('.pagination')
 if (pagination) {
     createPagination(pagination)
 }
+
+const Validate = {
+    controlado(event) {
+        const divOrgao = document.querySelector('#orgao')
+        divOrgao.classList.toggle('hidden')
+        const select = divOrgao.querySelector('select')
+        select.required = true
+    },
+    allFields(event) {
+        const items = document.querySelectorAll('.obrigatorio')
+        for(item of items) {
+            if (item.value == "") {
+                const message = document.createElement('div')
+                const pMessage = document.createElement('p')
+                message.classList.add('messages')
+                message.classList.add('errors')
+                pMessage.classList.add('error')
+                item.classList.add('obrigatorio-error')
+                pMessage.innerHTML = 'Preencha os campos obrigatórios!'
+                message.append(pMessage)
+                document.querySelector('body').append(message)
+
+                event.preventDefault()
+            }
+        }
+        setTimeout(function() {
+            const items = document.querySelectorAll('.obrigatorio-error')
+            for(item of items) {
+                item.classList.remove('obrigatorio-error')
+            }
+        }, 5000)
+    },
+    consumo(event) {
+        const divQuantidade = document.querySelector('#quantidade')
+        const inputConsumo = document.querySelector('div.item input')
+        
+        if(inputConsumo.value == null || inputConsumo.value == 0 || inputConsumo.value < 0) {
+            const divMessage = document.createElement('div')
+            const pMessage = document.createElement('p')
+            divMessage.classList.add('messages')
+            divMessage.classList.add('errors')
+            pMessage.classList.add('error')
+            pMessage.innerHTML = 'Por favor, insira o valor do Consumo do Reagente.'
+            divMessage.append(pMessage)
+            document.querySelector('body').append(divMessage)
+            inputConsumo.value = ""
+            
+            event.preventDefault()
+        }
+
+        else if(inputConsumo.value > Number(divQuantidade.textContent)) {
+            const divMessage = document.createElement('div')
+            const pMessage = document.createElement('p')
+            divMessage.classList.add('messages')
+            divMessage.classList.add('errors')
+            pMessage.classList.add('error')
+            pMessage.innerHTML = 'O valor do Consumo não pode ser maior do que a quantidade de Reagente.'
+            divMessage.append(pMessage)
+            document.querySelector('body').append(divMessage)
+            inputConsumo.value = ""
+            
+            event.preventDefault()
+        }
+    }
+}
+

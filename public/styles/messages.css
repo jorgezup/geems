@@ -1,0 +1,62 @@
+/* Messages */
+@keyframes hidemessage {
+    to {
+        top: -50px;
+        opacity: 0;
+    }
+}
+
+.messages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    color: white;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+
+    border-radius: 4px;
+
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 344px;
+    height: 135px;
+    
+    z-index: 100;
+
+    opacity: 1;
+
+    animation: hidemessage 400ms 5s ease-out forwards;
+}
+
+.messages > p {
+    display: block;
+    padding: 0 16px;
+
+    line-height: 18px;
+}
+
+.messages.errors {
+    background-color: var(--red-color);
+}
+
+.messages.success {
+    background-color: green;
+}
+
+/* Input Error Login */
+@keyframes hideborder {
+    to {
+        border: 1px solid #dddddd;
+    }
+}
+
+div.item input.obrigatorio-error {
+    border: 1px solid red;
+
+    animation: hideborder 400ms 5s ease-out forwards;
+}

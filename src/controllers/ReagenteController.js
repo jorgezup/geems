@@ -1,10 +1,32 @@
 const { Op, fn, col } = require('sequelize')
 const Reagente = require('../models/Reagente')
+const Consumo = require('../models/Consumo')
+const { create } = require('./UserController')
+
+async function verificaConsumo(reagente) {
+    let quantidade_consumida = 0
+
+    const consumo = await Consumo.findAll({
+        where: {
+            reagente_id:reagente.id
+        }
+    })
+
+    if(consumo) {
+        consumo.forEach(element => {
+            quantidade_consumida += Number(element.dataValues.quantidade_consumida)
+        });
+    }
+
+    reagente.quantidade_consumida = quantidade_consumida
+    reagente.quantidade_final = reagente.quantidade - quantidade_consumida
+        
+    return reagente
+}
 
 module.exports = {
     async index(req, res){
         let { column, order, filter, page, limit }  = req.query
-        console.log(req.query)
         page = page || 1
         limit = limit || 8
         let offset = limit * (page - 1)
@@ -53,9 +75,10 @@ module.exports = {
                 total: mathTotal,
                 page
             }
-            
-            console.log(pagination)
-            return res.render('Reagentes/list.pug', { reagentes, pagination, filter })
+
+            await Promise.all(reagentes.map(verificaConsumo))       
+
+            return res.render('reagentes/list.pug', { reagentes, pagination, filter, order, column })
         }
         else if (order) {
             const reagentes = await Reagente.findAll({
@@ -70,8 +93,10 @@ module.exports = {
                 total: mathTotal,
                 page
             }
+
+            await Promise.all(reagentes.map(verificaConsumo))            
             
-            return res.render('Reagentes/list.pug', { reagentes, pagination, filter, order, column })
+            return res.render('reagentes/list.pug', { reagentes, pagination, filter, order, column })
         }
         else {
             const reagentes = await Reagente.findAll({
@@ -81,15 +106,21 @@ module.exports = {
                 group: 'id',
             })
             
+            
             let mathTotal = total == undefined ? 0 : Math.ceil(total/limit)
             
             const pagination = {
                 total: mathTotal,
                 page
             }
-            
-            return res.render('Reagentes/list.pug', { reagentes, pagination, filter, order, column })
+
+            await Promise.all(reagentes.map(verificaConsumo))            
+
+            return res.render('reagentes/list.pug', { reagentes, pagination, filter, order, column })
         }        
+    },
+    create(req, res) {
+        return res.render('reagentes/create')
     },
     async find(req, res) {
         const { id } = req.params
@@ -109,7 +140,7 @@ module.exports = {
                 ]
             }
         )
-        return res.render('Reagentes/show.pug', { reagente })
+        return res.render('reagentes/show.pug', { reagente })
 
     },
     async store(req, res) {
@@ -147,7 +178,7 @@ module.exports = {
          })
 
     
-         return res.render('index.pug')
+         return res.redirect('/reagentes/list')
     },
     async edit(req, res) {
         const { id } = req.params
@@ -173,12 +204,9 @@ module.exports = {
             }
         )
 
-        return res.render('Reagentes/edit', {reagente})
+        return res.render('reagentes/edit', {reagente})
     },
     async update(req, res) {
-        // const { id } = req.params
-
-        // console.log(req.body.validade)
         const { 
             nome_comum,
             nome_oficial,
@@ -224,8 +252,7 @@ module.exports = {
     },
     async delete(req, res) {
         const { id } = req.body
-        console.log('oi')
-        console.log(req.body.id)
+
         await Reagente.destroy({
             where: {
                 id: req.body.id
@@ -234,26 +261,4 @@ module.exports = {
 
         return res.redirect('/')
     },
-    async consumo(req, res) {
-        const { id } = req.params
-        const reagente = await Reagente.findByPk(id,
-            {
-                attributes: [
-                    'id',
-                    'nome_oficial',
-                    'nome_comum',
-                    'formula_molecular',
-                    'marca',
-                    'lote',
-                    'controlado',
-                    'orgao',
-                    'estado',
-                    'quantidade',
-                    [fn('TO_CHAR', col('validade'), 'DD-MM-YYYY'), 'validade']
-                ]
-            }
-        )
-        console.log(reagente)
-        return res.render('Reagentes/consumo.pug', { reagente })
-    }
 }

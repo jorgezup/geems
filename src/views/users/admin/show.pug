@@ -1,0 +1,32 @@
+extends ../../layout.pug
+
+block content
+    section.container.form
+        .header
+            h3 Usuário
+
+        .fields-show
+            div.item
+                div Nome
+                    div=user.nome
+            div.item
+                div E-mail
+                    div=user.email
+
+            div.item
+                div Passaporte
+                    div=user.passaporte
+
+            div.item
+                div Cargo
+                    div=user.cargo
+
+            div.item
+                div Administrador
+                    div=user.is_admin ? "Sim" : "Não"
+
+            div.button-show
+                a.button(href=`/user/${user.id}/edit`) Editar
+
+
+        

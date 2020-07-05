@@ -1,0 +1,28 @@
+extends ../layout.pug
+
+block content
+    section.container.form
+        .header
+            h3 Reagente
+            if reagente.controlado == 'sim'
+                div.item.controlado
+                    div Controlado
+
+        form(action=`/reagentes/${reagente.id}/consumo`, method="post")
+            .fields-show
+                input(type="hidden", name="id")
+                div.item
+                    div Nome Comum
+                        div=reagente.nome_comum
+                div.item
+                    div Quantidade
+                        div#quantidade=(reagente.quantidade_final)
+                div.item 
+                    div Consumo
+                        input#registrar-consumo(type="number", name="quantidade_consumida", placeholder="Insira o valor do consumo do reagente")
+            
+            button.button#consumo(type="submit" onclick="Validate.consumo(event)") Cadastrar Consumo
+
+
+
+        

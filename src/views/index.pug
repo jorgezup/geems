@@ -1,10 +1,38 @@
-extends layout.pug
+doctype
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        include ./parts/styles.pug
+        title GEEMs
+        block head
 
-block content
-    .home-container
-        a.btn-home(href="/buscar-reagente") Buscar Reagente
-            i.material-icons search
-        a.btn-home(href="/cadastrar-reagente") Novo Reagente
-            i.material-icons add
-        //- a.btn-home(href="/registrar-consumo") Registrar Consumo
-        //-     i.material-icons assignment
+    body
+        header
+            .container-header(onclick="window.location.href='/'")
+                .logo-header
+                    .imagem-header
+                        img(src="/flask.svg", alt="")
+                    .titulo-header
+                        h2 GEEMs
+                        p Controle de Reagentes
+
+                .menu-header
+                    a(href="/conta")
+                        i.material-icons account_circle
+                        | Minha Conta
+                    form(action="/logout", method="post") 
+                        button Sair
+
+        main.container-main__buttons
+            .actions
+                button(onclick="window.location.href='/reagentes/list'")
+                    a(href="/reagentes/list") Buscar Reagentes
+                button(onclick="window.location.href='/reagentes'")
+                    a(href="/reagentes") Novo Reagente
+                if req.isAdmin == true            
+                    button(onclick="window.location.href='/users'")
+                        a(href="/users") Usuários
+                    button(onclick="window.location.href='/relatorios'")
+                        a(href="/relatorios") Relatórios
+    
+    include ./parts/footer.pug

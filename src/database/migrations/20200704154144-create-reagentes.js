@@ -19,7 +19,7 @@ module.exports = {
         },
         formula_molecular : {
           type: Sequelize.TEXT,
-          allowNull: false,
+          allowNull: true,
         },
         marca : {
           type: Sequelize.TEXT,
@@ -27,7 +27,7 @@ module.exports = {
         },
         lote : {
           type: Sequelize.TEXT,
-          allowNull: false,
+          allowNull: true,
         },
         validade : {
           type: Sequelize.DATE,
@@ -47,7 +47,7 @@ module.exports = {
         },
         incompatibilidade : {
           type: Sequelize.TEXT,
-          allowNull: false,
+          allowNull: true,
         },
         controlado : {
           type: Sequelize.TEXT,
@@ -59,7 +59,7 @@ module.exports = {
         },
         info_adicionais : {
           type: Sequelize.TEXT,
-          allowNull: false,
+          allowNull: true,
         },
         created_at: {
           type: Sequelize.DATE,

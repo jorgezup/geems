@@ -1,17 +1,30 @@
 /* Pacotes a serem utilizados */
 const express = require('express')
 const path = require('path')
-const methodOverride = require('method-override')
-
 
 /* Importando a database */
 require('./database')
 
-/* Arquivo a ser utilizado */
 const routes = require('./routes/routes')
+/* Arquivo a ser utilizado */
+
+
+const methodOverride = require('method-override')
+const session = require('./config/session')
+
 
 /* Iniciando o app */
 const app = express()
+
+/* Session */
+app.use(session)
+app.use((req, res, next) => {
+    res.locals.session = req.session
+    next()
+})
+
+
+
 
 /* View */
 app.set('views', path.join(__dirname, 'views'))

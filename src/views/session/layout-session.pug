@@ -1,0 +1,18 @@
+doctype
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        include ../parts/styles.pug
+        title GEEMs
+
+    body
+    include ../parts/messages.pug
+    .session-container
+        .logo--login
+            img(src="/flask.svg", alt="Logo do Sistema")
+            .titulo--login
+                h2 GEEMs
+                p Gestão de Laboratório
+    block content
+
+script(src="/scripts.js")

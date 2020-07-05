@@ -1,0 +1,12 @@
+extends ../../layout.pug
+
+block content
+    section.container.form
+        form(action="/user" method="POST")
+            .header
+                h3 Cadastrar Usuário
+
+            .fields
+                include fields.pug
+            
+            button.button(type='submit') Salvar

@@ -1,0 +1,65 @@
+if user
+    input(type="hidden", name="id" value=user.id)
+    .item
+        div Nome
+            div
+                input(type="text", name="nome", placeholder="Digite o nome completo" value=user.nome)
+
+    .item
+        div Email
+            div
+                input(type="email", name="email" placeholder="Digite o email" value=user.email required)
+
+    .item
+        div Passaporte
+            div
+                input(type="text", name="passaporte" placeholder="Digite o passaporte da UFMS" value=user.passaporte required)
+
+    div.item
+        div Cargo
+            div
+                select(name="cargo" required)
+                    option(value="aluno") Aluno
+                    option(value="tecnico") Técnico
+                    option(value="professor") Professor
+
+    .item#administrador
+        div Administrador
+        div
+            if user.is_admin == true
+                input(type="checkbox", name="is_admin" value="true" checked )
+            else
+                input(type="checkbox", name="is_admin" value="true")
+
+else
+    .item
+        div Nome
+            div
+                input(type="text", name="nome", placeholder="Digite o nome completo")
+
+    .item
+        div Email
+            div
+                input(type="email", name="email" placeholder="Digite o email" required)
+
+    .item
+        div Passaporte
+            div
+                input(type="text", name="passaporte" placeholder="Digite o passaporte da UFMS" required)
+
+    .item
+        div Cargo
+            div
+                select(name="cargo" required)
+                    option()
+                    option(value="aluno") Aluno
+                    option(value="tecnico") Técnico
+                    option(value="professor") Professor
+
+    .item#administrador
+        div Administrador
+        div
+            input(type="checkbox", name="is_admin" value="true")
+
+
+

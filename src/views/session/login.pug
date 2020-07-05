@@ -1,0 +1,14 @@
+extends ./layout-session.pug
+
+block content
+    section.container.form.login
+        form(action="/login" method="POST")
+            .header
+                h3 login
+
+            .fields
+                include fields.pug
+            
+            .botoes
+                button.button(type='submit') Acessar
+                a(href="/conta/esqueceu-senha") Esqueci minha senha

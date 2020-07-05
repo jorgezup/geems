@@ -1,0 +1,44 @@
+main.container-main__buttons {
+    /* width: 700px; */
+    /* display: flex; */
+    /* flex-direction: row; */
+    margin: auto;
+}
+
+main.container-main__buttons .actions {
+    display: inline-flex;
+}
+
+main.container-main__buttons .actions button{
+    padding: 64px 8px;
+
+    margin-right: 16px;
+    
+    width: 120px;
+
+    background-color: var(--primary-color);
+
+    border-radius: 8px;
+    box-shadow: 0 8px 6px -6px black;
+
+    transition: 400ms;
+
+    cursor: pointer;
+}
+
+main.container-main__buttons .actions button:last-of-type{
+    margin-right: initial;
+}
+
+main.container-main__buttons .actions button:hover{
+    background-color: var(--primary-color-hover);
+}
+
+main.container-main__buttons .actions button a{
+    font-size: 1.8rem;
+    font-weight: bold;
+
+    word-break: normal;
+    
+    color: white;
+}

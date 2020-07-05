@@ -1,0 +1,113 @@
+/* Página Index */
+body header .container-header,
+body header .container-header.site{
+    width: 940px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: ". logo menu";
+}
+
+body header .container-header.site{
+    grid-template-areas: "logo search menu";
+}
+
+.logo-header {
+    /* margin-left: auto; */
+    grid-area: logo;
+
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.logo-header .titulo-header h2{
+    font-size: 3.4rem;
+    letter-spacing: .2rem;
+
+    color: white;
+}
+
+.logo-header .titulo-header p{
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    color: #d9d9d9;
+}
+
+.imagem-header {
+    max-width: 70px;
+    margin-right: 16px;
+}
+
+.imagem-header img{
+    width: 100%;
+}
+
+/* Header Search */
+.container-header.site form {
+    align-self: center;
+    justify-self: center;
+    width: 90%;
+}
+
+
+.search input {
+    grid-area: search;
+
+    width: 100%;
+
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.2rem;
+
+    font-size: 1.6rem;
+}
+
+/* Menu Novo Reagente e Minha conta */
+.container-header .menu-header {
+    grid-area: menu;
+
+    margin-left: auto;
+
+    align-self: center;
+    justify-self: center;
+}
+
+.container-header.site .menu-header {
+    display: inline-flex;
+}
+
+.container-header.site .menu-header .itens:first-of-type{
+    margin-right: 8px;
+}
+
+.container-header .menu-header a{
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+
+    align-self: center;
+    justify-self: center;
+    
+    color: white;
+    font-size: 1.6rem;
+
+    transition: 200ms;
+}
+
+.container-header .menu-header a:hover{
+    color: lightgray;
+}
+
+.container-header .menu-header a i{
+    margin-right: 4px;
+}
+
+

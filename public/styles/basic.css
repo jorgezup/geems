@@ -1,0 +1,50 @@
+:root {
+    --primary-color: #0088B7;
+    --primary-color-hover: rgb(4, 106, 139);
+
+    --red-color: #FC5F61;
+    --red-color-hover: rgb(223, 74, 76);
+
+    --yellow-color: #F7D360;
+    --yellow-color-hover: #DAB53B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+
+    text-decoration: none;
+    list-style-type: none;
+
+    /* color: black; */
+}
+html, body {
+    min-height: 100vh;
+}
+
+html {
+    /* a cada 1rem será considerado 10px */
+    font-size: 62.5%;
+    
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+
+    background-color: #f9f9f9;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 90%;
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+footer {
+    margin-top: auto;
+}
