@@ -8,7 +8,7 @@ module.exports = {
         console.log(req.user.id)
         req.session.userId = req.user.id 
 
-        return res.render('index')
+        return res.redirect('/')
     },
     logout(req, res) {
         req.session.destroy()

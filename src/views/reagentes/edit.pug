@@ -2,7 +2,7 @@ extends ../layout.pug
 
 block content
     section.container.form
-        form(action="/editar-reagente?_method=PUT" method="POST")
+        form(action="/reagentes?_method=PUT" method="POST")
             .header
                 h3 Editar Reagente
 
@@ -13,7 +13,7 @@ block content
             button.button(type="submit") Atualizar
             
         
-        form#form-delete(action="/editar-reagente?_method=DELETE" method="POST")
+        form#form-delete(action="/reagentes?_method=DELETE" method="POST")
             input(type="hidden", name="id" value=reagente.id)
             button.button(type="submit") Deletar
 

@@ -53,8 +53,9 @@ body header .container-header.site{
 /* Header Search */
 .container-header.site form {
     align-self: center;
-    justify-self: center;
-    width: 90%;
+    /* justify-self: center; */
+    /* width: 100%; */
+    margin-left: 10px;
 }
 
 
@@ -74,9 +75,9 @@ body header .container-header.site{
     grid-area: menu;
 
     margin-left: auto;
-
-    align-self: center;
     justify-self: center;
+    align-self: center;
+    /* justify-self: right; */
 }
 
 .container-header.site .menu-header {
@@ -84,8 +85,9 @@ body header .container-header.site{
 }
 
 .container-header.site .menu-header .itens:first-of-type{
-    margin-right: 8px;
+    margin-right: 32px;
 }
+
 
 .container-header .menu-header a{
     display: flex;

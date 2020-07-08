@@ -35,6 +35,7 @@ module.exports = {
 
         console.log(reagente_id)
         console.log(req.body)
+        console.log(req.session.userId)
 
         const reagente = await Reagente.findByPk(reagente_id)
 
@@ -43,7 +44,7 @@ module.exports = {
         const consumo = await Consumo.create({
             quantidade_consumida: Number(quantidade_consumida),
             reagente_id,
-            user_id:6
+            user_id: req.session.userId
         })
 
         return res.redirect('/')

@@ -4,8 +4,8 @@ block content
     .container
         .title
             h2 Listagem dos Usuários
-            button#new-user
-                a(href="/user") Novo Usuário
+            button#new-user(onclick='window.location.href="/users"')
+                a(href="/users") Novo Usuário
         table.content-table
             thead
                 tr
@@ -38,7 +38,7 @@ block content
                     td= user.is_admin
                     
                     td
-                        a(href=`/user/${user.id}`) Visualizar
+                        a(href=`/users/${user.id}`) Visualizar
                             i.material-icons search
     
     //-     div.pagination(data-page=pagination.page, data-total=pagination.total, data-filter=filter, data-column=column, data-order=order)        

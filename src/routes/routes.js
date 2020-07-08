@@ -15,6 +15,7 @@ const { onlyUsers, isLoggedRedirect, verifyIsAdmin, isAdmin } = require('../midd
 const routes = express.Router()
 
 routes.get('/', onlyUsers, verifyIsAdmin, (req, res) => {
+    // console.log(req)
     res.render('index.pug', {req})
 })
 
@@ -25,7 +26,7 @@ routes.get('/reagentes/search', onlyUsers, ReagenteController.index)
 routes.get('/reagentes/list', ReagenteController.index)
 routes.get('/reagentes', ReagenteController.create)
 routes.get('/reagentes/:id', ReagenteController.find)
-routes.get('/reagentes/:id/edit', ReagenteController.edit)
+routes.get('/reagentes/:id/edit', onlyUsers, ReagenteController.edit)
 
 routes.post('/reagentes', ReagenteValidators.post, ReagenteController.store)
 routes.put('/reagentes', ReagenteController.update)

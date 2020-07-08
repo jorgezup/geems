@@ -1,7 +1,7 @@
 const { Op, fn, col } = require('sequelize')
 const Reagente = require('../models/Reagente')
 const Consumo = require('../models/Consumo')
-const { create } = require('./UserController')
+
 
 async function verificaConsumo(reagente) {
     let quantidade_consumida = 0
@@ -182,6 +182,8 @@ module.exports = {
     },
     async edit(req, res) {
         const { id } = req.params
+        const isAdmin = req.user.is_admin
+        console.log(isAdmin)
 
         const reagente = await Reagente.findByPk(id,
             {
@@ -204,7 +206,7 @@ module.exports = {
             }
         )
 
-        return res.render('reagentes/edit', {reagente})
+        return res.render('reagentes/edit', {reagente, isAdmin})
     },
     async update(req, res) {
         const { 

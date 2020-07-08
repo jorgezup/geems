@@ -18,10 +18,14 @@ if user
     div.item
         div Cargo
             div
-                select(name="cargo" required)
-                    option(value="aluno") Aluno
-                    option(value="tecnico") Técnico
-                    option(value="professor") Professor
+                select(name="cargo")
+                    each cargo in cargos
+                        p=cargo
+                        if user.cargo == cargo
+                            option(value=cargo selected) cargo
+                        else    
+                            option(value=cargo) cargo.name
+
 
     .item#administrador
         div Administrador
@@ -60,6 +64,7 @@ else
         div Administrador
         div
             input(type="checkbox", name="is_admin" value="true")
+
 
 
 

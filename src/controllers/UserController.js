@@ -2,6 +2,7 @@ const { hash } = require('bcrypt')
 const crypto = require('crypto')
 
 const User = require('../models/User');
+const Cargo = require('../models/Cargo');
 
 module.exports = {
     async index(req, res) {
@@ -27,7 +28,7 @@ module.exports = {
             is_admin:is_admin || false
         })
 
-        return res.render('index')
+        return res.redirect('/')
     },
     async create(req, res){
         return res.render('users/admin/create')
@@ -40,6 +41,8 @@ module.exports = {
                 'id',
                 'nome',
                 'email',
+                'passaporte',
+                'cargo',
                 'is_admin'
             ]
         })
@@ -54,11 +57,17 @@ module.exports = {
                 'id',
                 'nome',
                 'email',
+                'passaporte',
+                'cargo',
                 'is_admin'
             ]
         })
 
-        return res.render('users/admin/edit', {user})
+        const cargos = await Cargo.findAll({raw:true})
+        console.log(cargos)
+           
+
+        return res.render('users/admin/edit', {user, cargos})
     },
     async update(req, res) {
         const { nome, email, is_admin } = req.body

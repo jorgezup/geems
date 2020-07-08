@@ -18,10 +18,14 @@ if user
     div.item
         div Cargo
             div
-                select(name="cargo" required)
-                    option(value="aluno") Aluno
-                    option(value="tecnico") Técnico
-                    option(value="professor") Professor
+            div=user.cargo
+                select(name="cargo")
+                    if user.cargo == 'aluno'
+                        option(value="aluno" selected) Aluno
+                    if user.cargo == 'tecnico'
+                        option(value="tecnico" selected) Tecnico
+                    if user.cargo =='professor'
+                        option(value="professor" selected) Professor
 
     .item#administrador
         div Administrador

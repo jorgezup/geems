@@ -43,14 +43,26 @@ if reagente
                     span
                         input(type="radio", name="estado" value="líquido" checked) 
                         | Líquido (Litro)
-    div.item
-        div Quantidade
-            div
-                input(type="number", name="quantidade" value=reagente.quantidade_final)
+    if isAdmin                
+        div.item
+            div Quantidade Inicial
+                div
+                    input(type="number", name="quantidade" value=reagente.quantidade)
+    else
+        div.item
+            div Quantidade Inicial
+                    input(type="number", name="quantidade" value=reagente.quantidade disabled)
+                    
     div.item
         div Localização
             div
-                input(type="text", name="localizacao" value=reagente.localizacao)
+                select.obrigatorio(name="localizacao")
+                    if reagente.localizacao == 'Armário 1'
+                        option(value="Armário 1" selected) Armário 1
+                    if reagente.localizacao == 'Armário 2'
+                        option(value="Armário 2" selected) Armário 2
+                    if reagente.localizacao == 'Sala do Professor'
+                        option(value="Sala do Professor" selected) Sala do Professor
     div.item
         div Incompatibilidade
             div
@@ -60,17 +72,17 @@ if reagente
             div.radio
                 if reagente.controlado == 'sim'
                     span
-                        input(type="radio", name="controlado" id="sim" value="sim" checked)
+                        input(type="radio", name="controlado" id="sim" value="sim" onchange="Validate.controlado(event)" checked)
                         |  Sim
                     span
-                        input(type="radio", name="controlado" id="não" value="não")
+                        input(type="radio", name="controlado" id="não" onchange="Validate.controlado(event)" value="não")
                         | Não
                 else 
                     span
-                        input(type="radio", name="controlado" id="sim" value="sim" )
+                        input(type="radio", name="controlado" id="sim" onchange="Validate.controlado(event)" value="sim" )
                         |  Sim
                     span
-                        input(type="radio", name="controlado" id="não" value="não" checked)
+                        input(type="radio", name="controlado" id="não" value="não" onchange="Validate.controlado(event)" checked)
                         | Não
 
     if reagente.controlado == 'não'
@@ -83,8 +95,10 @@ if reagente
         div#orgao.item
             div Órgão
                 select(name="orgao" required)
-                    option(value="Exército") Exército
-                    option(value="Polícia Federal") Polícia Federal
+                    if reagente.orgao == 'Exército'
+                        option(value="Exército" selected) Exército
+                    if reagente.orgao == 'Polícia Federal'
+                        option(value="Polícia Federal" selected) Polícia Federal
 
 
     div.item
