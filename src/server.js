@@ -1,7 +1,11 @@
 /* Pacotes a serem utilizados */
+const dotenv = require('dotenv')
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
+
+/* Dotenv */
+dotenv.config()
 
 /* Importando a database */
 require('./database')

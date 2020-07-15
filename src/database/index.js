@@ -9,6 +9,11 @@ const Orgao = require('../models/Orgao')
 const Local = require('../models/Local')
 
 const connection = new Sequelize(dbConfig)
+if (process.env.DATABASE_URL) {
+    const connection = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    });
+}
 
 Reagente.init(connection)
 User.init(connection)

@@ -20,11 +20,11 @@ const session = require('express-session')
 const pgSession = require('connect-pg-simple')(session);
  
 const pgPool = new pg.Pool({
-    user: 'postgres',
-    password: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    database: 'geems'
+  user: 'postgres',
+  password: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  database: 'geems'
 });
  
 module.exports = session({
