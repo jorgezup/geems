@@ -27,6 +27,8 @@ const pgPool = new pg.Pool({
   database: 'geems'
 });
 
+console.log('Session -> Datab')
+
 if (process.env.DATABASE_URL) {
   module.exports = session({
     store: new pgSession({
