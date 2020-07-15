@@ -1,6 +1,7 @@
 /* Pacotes a serem utilizados */
 const express = require('express')
 const path = require('path')
+const cors = require('cors')
 
 /* Importando a database */
 require('./database')
@@ -15,6 +16,9 @@ const session = require('./config/session')
 
 /* Iniciando o app */
 const app = express()
+
+/* Cors */ 
+app.use(cors()) 
 
 /* Session */
 app.use(session)
@@ -40,6 +44,4 @@ app.use(methodOverride('_method')) /* sobrescrever o método, para utilizar o PU
 app.use(routes)
 
 /* Iniciar o servidor na porta  */
-app.listen(3000, () => {
-    console.log('server is running...')
-})
+app.listen(process.env.PORT || 3000)
