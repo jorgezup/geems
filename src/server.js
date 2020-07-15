@@ -17,7 +17,6 @@ const routes = require('./routes/routes')
 const methodOverride = require('method-override')
 const session = require('./config/session')
 
-
 /* Iniciando o app */
 const app = express()
 

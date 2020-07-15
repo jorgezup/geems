@@ -26,6 +26,20 @@ const pgPool = new pg.Pool({
   port: 5432,
   database: 'geems'
 });
+
+if (process.env.DATABASE_URL) {
+  module.exports = session({
+    store: new pgSession({
+      conString: process.env.DATABASE_URL,             // Connection pool
+      tableName : 'session'   // Use another table-name than the default "session" one
+    }),
+    secret: 'oqiwpeiisjksh',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+  });
+}
+
  
 module.exports = session({
   store: new pgSession({
@@ -37,3 +51,4 @@ module.exports = session({
   saveUninitialized: false,
   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
 });
+
