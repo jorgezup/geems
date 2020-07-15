@@ -9,16 +9,20 @@ class Reagente extends Model {
             marca: DataTypes.TEXT,
             lote: DataTypes.TEXT,
             validade: DataTypes.DATE,
-            estado: DataTypes.TEXT,
+            estado: DataTypes.ENUM({values: ['sólido', 'líquido']}),
             quantidade: DataTypes.INTEGER,
-            localizacao: DataTypes.TEXT,
             incompatibilidade: DataTypes.TEXT,
-            controlado: DataTypes.TEXT,
-            orgao: DataTypes.TEXT,
+            controlado: DataTypes.BOOLEAN,
+            orgao_controle_id: DataTypes.INTEGER,
             info_adicionais: DataTypes.TEXT,
         }, {
            sequelize 
         })
+    }
+    static associate(models) {
+        this.belongsTo(models.Local, { foreignKey: 'local_armazenamento_id', as: 'local_armazenamento'})
+        this.belongsTo(models.User, { foreignKey: 'created_by_user_id' })
+        // this.belongsTo(models.Orgao, { foreignKey: 'orgao_controle_id'})
     }
 }
 

@@ -1,13 +1,14 @@
 const { Model, DataTypes } = require('sequelize')
 
-class Cargo extends Model {
+class Papel extends Model {
     static init(sequelize) {
         super.init({
             nome: DataTypes.STRING,
         }, {
-            sequelize
+            sequelize,
+            tableName:'roles'
         })
     }
 }
 
-module.exports = Cargo;
+module.exports = Papel;

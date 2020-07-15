@@ -26,22 +26,16 @@ async function isLoggedRedirect(req, res, next) {
     next()
 }
 
-async function verifyIsAdmin(req, res, next) {
-    const isAdmin = req.user.is_admin 
-
-    req.isAdmin = isAdmin
-
-    next()
-}
-
 async function isAdmin(req, res, next) {
     const user = await User.findOne({
         where: { id:req.session.userId }
     })
+    console.log(user.is_admin)
 
-    if (!user.is_admin) return res.render('index', {
-        error: 'Acesso negado!'
-    })
+    if (user.is_admin == false) {
+        req.isAdmin = user.is_admin
+        return res.render('access-denied')
+    }
 
     req.user = user 
     
@@ -51,6 +45,5 @@ async function isAdmin(req, res, next) {
 module.exports = {
     onlyUsers,
     isLoggedRedirect,
-    verifyIsAdmin,
     isAdmin
 }

@@ -7,21 +7,7 @@ html(lang='en')
         block head
 
     body
-        header
-            .container-header(onclick="window.location.href='/'")
-                .logo-header
-                    .imagem-header
-                        img(src="/flask.svg", alt="")
-                    .titulo-header
-                        h2 GEEMs
-                        p Controle de Reagentes
-
-                .menu-header
-                    a(href="/conta")
-                        i.material-icons account_circle
-                        | Minha Conta
-                    form(action="/logout", method="post") 
-                        button Sair
+        include ./parts/header.pug
 
         main.container-main__buttons
             .actions
@@ -29,10 +15,11 @@ html(lang='en')
                     a(href="/reagentes/list") Buscar Reagentes
                 button(onclick="window.location.href='/reagentes'")
                     a(href="/reagentes") Novo Reagente
-                if req.isAdmin == true            
+                if isAdmin            
                     button(onclick="window.location.href='/users/list'")
                         a(href="/users/list") Usuários
                     button(onclick="window.location.href='/relatorios'")
                         a(href="/relatorios") Relatórios
     
     include ./parts/footer.pug
+    script(src="/scripts.js")

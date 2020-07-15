@@ -112,4 +112,52 @@ body header .container-header.site{
     margin-right: 4px;
 }
 
+ul li ul.dropdown {
+    min-width: 125px;
+    display: none;
+    position: absolute;
+    z-index: 999;
+}
+
+ul li:hover ul.dropdown {
+    display: block;
+    position: absolute;
+}
+
+ul li ul.dropdown li {
+    display: block;
+}
+
+ul li ul.dropdown li button {
+    cursor: pointer;
+
+    font-size: 1.6rem;
+    color: white;
+
+    background-color: var(--primary-color);
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul li ul.dropdown li button i{
+    margin-right: 4px;
+}
+
+ul li ul.dropdown li button:hover {
+    color: lightgray;
+}
+
+/* Ocultar form and button */
+.container-header .hidden {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+
 

@@ -18,13 +18,12 @@ if user
     div.item
         div Cargo
             div
-                select(name="cargo")
-                    each cargo in cargos
-                        p=cargo
-                        if user.cargo == cargo
-                            option(value=cargo selected) cargo
+                select(name="papel_id")
+                    each papel in papeis
+                        if papel.id == user.papel_id
+                            option(value=papel.id selected)=papel.nome
                         else    
-                            option(value=cargo) cargo.name
+                            option(value=papel.id)=papel.nome
 
 
     .item#administrador
@@ -53,12 +52,10 @@ else
 
     .item
         div Cargo
-            div
-                select(name="cargo" required)
-                    option()
-                    option(value="aluno") Aluno
-                    option(value="tecnico") Técnico
-                    option(value="professor") Professor
+            select(name="papel_id" required)
+                option()
+                each papel in papeis
+                    option(value=papel.id)=papel.nome
 
     .item#administrador
         div Administrador

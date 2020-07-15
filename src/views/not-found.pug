@@ -1,0 +1,21 @@
+extends ./layout.pug
+	
+    
+block content   
+    .error-lottie.not-found
+
+    script(src='/lottie.min.js')
+
+    script. 
+        const element = document.querySelector('.error-lottie')
+
+        lottie.loadAnimation({
+            container: element, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/4047-404-animation.json' // the path to the animation json
+        });
+        setTimeout(() => {
+            window.location.href = '/'
+        },3200)

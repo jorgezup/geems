@@ -34,28 +34,42 @@ module.exports = {
           allowNull: false,
         },
         estado : {
-          type: Sequelize.TEXT,
+          type: Sequelize.ENUM,
+          values: ['sólido', 'líquido'],
           allowNull: false,
         },
         quantidade : {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
-        localizacao : {
-          type: Sequelize.TEXT,
+        local_armazenamento_id: {
+          type: Sequelize.INTEGER,
           allowNull: false,
+          references: { model: 'locais', key: 'id' },
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE',
         },
         incompatibilidade : {
           type: Sequelize.TEXT,
           allowNull: true,
         },
         controlado : {
-          type: Sequelize.TEXT,
+          type: Sequelize.BOOLEAN,
           allowNull: false,
         },
-        orgao : {
-          type: Sequelize.TEXT,
-          allowNull: false,
+        orgao_controle_id: {
+          type: Sequelize.INTEGER,
+          allowNull: true,
+          // references: { model: 'orgaos', key: 'id' },
+          // onUpdate: 'CASCADE',
+          // onDelete: 'CASCADE',
+        },
+        created_by_user_id: {
+          type: Sequelize.INTEGER,
+          allowNull: true,
+          references: { model: 'users', key: 'id' },
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE',
         },
         info_adicionais : {
           type: Sequelize.TEXT,

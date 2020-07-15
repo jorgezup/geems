@@ -43,26 +43,27 @@ block content
                     tr.indisponivel
                         td= reagente.nome_oficial
                         td= reagente.marca
-                        td= reagente.controlado
+                        td= reagente.controlado ? "sim" : "não"
                         td= reagente.quantidade_final
                         
                         td
                             a(href=`/reagentes/${reagente.id}`) Visualizar
                                 i.material-icons search
-                            a(href=`/reagentes/${reagente.id}/consumo`) Consumo
-                                i.material-icons assignment
+                            //- a(href=`/reagentes/${reagente.id}/consumo`) Consumo
+                            //-     i.material-icons assignment
                 else
                     tr
                         td= reagente.nome_oficial
                         td= reagente.marca
-                        td= reagente.controlado
+                        td= reagente.controlado ? "sim" : "não"
                         td= reagente.quantidade_final
                         
                         td
                             a(href=`/reagentes/${reagente.id}`) Visualizar
                                 i.material-icons search
-                            a(href=`/reagentes/${reagente.id}/consumo`) Consumo
-                                i.material-icons assignment
+                                a(href=`/reagentes/${reagente.id}/consumo`) Consumo
+                                    i.material-icons assignment
+
 
     
         div.pagination(data-page=pagination.page, data-total=pagination.total, data-filter=filter, data-column=column, data-order=order)        

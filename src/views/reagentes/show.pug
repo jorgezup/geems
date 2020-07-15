@@ -4,7 +4,7 @@ block content
     section.container.form
         .header
             h3 Reagente
-            if reagente.controlado == 'sim'
+            if reagente.controlado
                 div.item.controlado
                     div Controlado
 
@@ -27,13 +27,14 @@ block content
             div.item
                 div Validade
                     div=reagente.validade
-            if reagente.orgao != ""
+            if reagente.controlado
                 div.item 
                     div Órgão
-                        div=reagente.orgao
+                        div=reagente.orgao.nome
             div.button-show
                 a.button#consumo(href=`/reagentes/${reagente.id}/consumo`) Consumo
                 a.button(href=`/reagentes/${reagente.id}/edit`) Editar
+
 
 
         

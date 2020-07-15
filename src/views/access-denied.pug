@@ -1,0 +1,26 @@
+extends ./layout.pug
+
+block content
+    section.container.form.card
+        .error-lottie
+        div
+            h3 Acesso negado!
+
+        .center
+            a(href="#" onclick="history.back()") Voltar
+    
+    script(src='/lottie.min.js')
+
+    script. 
+        const element = document.querySelector('.error-lottie')
+
+        lottie.loadAnimation({
+            container: element, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: '/7479-access-denied.json' // the path to the animation json
+        });
+        setTimeout(() => {
+            window.location.href = '/'
+        },3200)

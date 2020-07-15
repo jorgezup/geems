@@ -25,9 +25,28 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      cargo : {
-        type: Sequelize.STRING,
+      papel_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: { model: 'roles', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      is_admin : {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
+      },
+      reset_token : {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      reset_token_expires : {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      disabled : {
+        type: Sequelize.BOOLEAN,
+        allowNull: true
       },
       created_at: {
         type: Sequelize.DATE,

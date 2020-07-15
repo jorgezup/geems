@@ -33,9 +33,9 @@ block content
             tbody
             each user in users
                 tr
-                    td= user.nome
-                    td= user.email
-                    td= user.is_admin
+                    td#nome= user.nome
+                    td#email= user.email
+                    td= user.is_admin ? "sim" : "não"
                     
                     td
                         a(href=`/users/${user.id}`) Visualizar

@@ -21,7 +21,7 @@ const pgSession = require('connect-pg-simple')(session);
  
 const pgPool = new pg.Pool({
     user: 'postgres',
-    password: '',
+    password: 'postgres',
     host: 'localhost',
     port: 5432,
     database: 'geems'

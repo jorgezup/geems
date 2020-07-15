@@ -475,6 +475,17 @@ section.container.form {
     margin-right: 8px;
 }
 
+.item#nome,
+td#nome {
+    text-transform: capitalize;
+}
+
+.item#email,
+.item#passaporte,
+td#email {
+    text-transform: lowercase;
+}
+
 div.button-show {
     display: flex;
     flex-direction: row;

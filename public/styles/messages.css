@@ -60,3 +60,38 @@ div.item input.obrigatorio-error {
 
     animation: hideborder 400ms 5s ease-out forwards;
 }
+
+/* Lottie */
+.container.card {
+    width: 500px;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 50px auto;
+
+    text-align: center;
+
+    align-items: center;
+}
+
+.success-lottie,
+.error-lottie {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.not-found {
+    height: 500px;
+}
+
+.container.card div h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.container.card .center a{
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}

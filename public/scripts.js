@@ -1,3 +1,22 @@
+const currentPage = location.pathname
+const header = document.querySelector("header div.container-header")
+/* Adiciona a classe active conforme a página que está */
+const inputForm = document.querySelector(".container-header form > input")
+const newReagente = document.querySelector('.menu-header ul.itens')
+if(currentPage == '/') {
+    header.classList.remove('site')
+    inputForm.classList.add('hidden')
+    newReagente.classList.add('hidden')
+}
+
+// const start = new Date;
+// const dia = (start.getDate())
+// const mes = ("0" + (start.getMonth() + 1)).slice(-2)
+// const ano = (start.getFullYear())
+// const data = `${ano}-${mes}-${dia}`
+// const dateControl = document.querySelector('input[type="date"]');
+// dateControl.value = data
+
 function paginate(selectedPage, totalPages) {
     let pages = [],
         oldPage
@@ -68,6 +87,7 @@ if (pagination) {
 const Validate = {
     controlado(event) {
         const divOrgao = document.querySelector('#orgao')
+        console.log(divOrgao)
         divOrgao.classList.toggle('hidden')
         const select = divOrgao.querySelector('select')
         select.required = true

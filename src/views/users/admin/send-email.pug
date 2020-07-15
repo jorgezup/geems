@@ -1,0 +1,27 @@
+extends ../../layout.pug
+
+block content
+    section.container.form.card
+        .success-lottie
+        div
+            h3 Conta Cadastrada! 
+            h3 Enviado e-mail com a senha.
+
+        .center
+            a(href="#" onclick="history.back()") Voltar
+    
+    script(src='/lottie.min.js')
+
+    script. 
+        const element = document.querySelector('.success-lottie')
+
+        lottie.loadAnimation({
+            container: element, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/7390-email-sent-successful.json' // the path to the animation json
+        })
+        setTimeout(() => {
+            window.location.href = '/users/list'
+        },3200)

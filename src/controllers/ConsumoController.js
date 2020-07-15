@@ -47,7 +47,7 @@ module.exports = {
             user_id: req.session.userId
         })
 
-        return res.redirect('/')
+        return res.redirect('/reagentes/list')
 
     }
 }

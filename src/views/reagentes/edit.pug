@@ -24,3 +24,9 @@ block content
             if (!confirmation )
                 event.preventDefault()
         }) 
+
+        const inputNao = document.querySelector('input#nao')
+        const divOrgao = document.querySelector('div#orgao')
+        if (nao.checked == true) {
+            divOrgao.classList.add('hidden')
+        }

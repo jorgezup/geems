@@ -12,13 +12,19 @@ header
                 type="text", name="filter", placeholder="Buscar por reagente")
 
         .menu-header
-            .itens
-                a(href="/reagentes")
-                    i.material-icons add
-                    | Novo Reagente
-            .itens
-                a(href="/conta")
-                    i.material-icons account_circle
-                    | Minha Conta
-                form(action="/logout", method="post") 
-                    button Sair
+            ul.itens
+                li
+                    a(href="/reagentes")
+                        i.material-icons add
+                        | Novo Reagente
+            ul.itens
+                li
+                    a(href="/conta")
+                        i.material-icons account_circle
+                        | Minha Conta
+                    ul.dropdown
+                        li
+                            form(action="/logout", method="post") 
+                                button 
+                                    i.material-icons login
+                                    | Sair

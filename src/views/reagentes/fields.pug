@@ -56,49 +56,43 @@ if reagente
     div.item
         div Localização
             div
-                select.obrigatorio(name="localizacao")
-                    if reagente.localizacao == 'Armário 1'
-                        option(value="Armário 1" selected) Armário 1
-                    if reagente.localizacao == 'Armário 2'
-                        option(value="Armário 2" selected) Armário 2
-                    if reagente.localizacao == 'Sala do Professor'
-                        option(value="Sala do Professor" selected) Sala do Professor
+                select(name='local_armazenamento_id')
+                    each local in locais
+                        if (reagente.local_armazenamento_id == local.id)
+                            option(value=local.id selected)=local.nome
+                        else
+                            option(value=local.id)=local.nome
     div.item
         div Incompatibilidade
             div
                 input(type="text", name="incompatibilidade" value=reagente.incompatibilidade)
     div.item
-        div Controlado
+        div#controlado Controlado
             div.radio
-                if reagente.controlado == 'sim'
+                if reagente.controlado
                     span
-                        input(type="radio", name="controlado" id="sim" value="sim" onchange="Validate.controlado(event)" checked)
+                        input(type="radio", name="controlado" id="sim" value="true" onchange="Validate.controlado(event)" checked)
                         |  Sim
                     span
-                        input(type="radio", name="controlado" id="não" onchange="Validate.controlado(event)" value="não")
+                        input(type="radio", name="controlado" id="nao" onchange="Validate.controlado(event)" value="false")
                         | Não
                 else 
                     span
-                        input(type="radio", name="controlado" id="sim" onchange="Validate.controlado(event)" value="sim" )
+                        input(type="radio", name="controlado" id="sim" onchange="Validate.controlado(event)" value="true" )
                         |  Sim
                     span
-                        input(type="radio", name="controlado" id="não" value="não" onchange="Validate.controlado(event)" checked)
+                        input(type="radio", name="controlado" id="nao" value="false" onchange="Validate.controlado(event)" checked)
                         | Não
 
-    if reagente.controlado == 'não'
-        div#orgao.item.hidden
-            div Órgão
-                select(name="orgao")
-                    option(value="Exército") Exército
-                    option(value="Polícia Federal") Polícia Federal
-    else
         div#orgao.item
             div Órgão
-                select(name="orgao" required)
-                    if reagente.orgao == 'Exército'
-                        option(value="Exército" selected) Exército
-                    if reagente.orgao == 'Polícia Federal'
-                        option(value="Polícia Federal" selected) Polícia Federal
+                select(name="orgao_controle_id")
+                    each orgao in orgaos
+                        if orgao.id==reagente.orgao_controle_id
+                            option(value=orgao.id selected)=orgao.nome
+                        else
+                            option(value=orgao.id)=orgao.nome
+                        
 
 
     div.item
@@ -143,35 +137,33 @@ else
     div.item
         div Quantidade
             div
-                input(type="number", name="quantidade")
+                input.obrigatorio(type="number", name="quantidade")
     div.item
         div Localização
             div
-                select.obrigatorio(name="localizacao")
+                select(name="local_armazenamento_id" required)
                     option()
-                    option(value="Armário 1") Armário 1
-                    option(value="Armário 2") Armário 2
-                    option(value="Sala do Professor") Sala do Professor
+                    each local in locais
+                        option(value=local.id)=local.nome
     div.item
         div Incompatibilidade:
             div
                 input(type="text", name="incompatibilidade")
     div.item
-        div Controlado
+        div#controlado Controlado
             div.radio
                 span
-                    input(type="radio", name="controlado" id="sim" value="sim" onchange="Validate.controlado(event)" ) 
+                    input(type="radio", name="controlado" id="sim" value="true" onchange="Validate.controlado(event)" ) 
                     |  Sim
                 span
-                    input(type="radio", name="controlado" id="não" value="não" onchange="Validate.controlado(event)" checked) 
+                    input(type="radio", name="controlado" id="nao" value="false" onchange="Validate.controlado(event)" checked) 
                     | Não
     div#orgao.item.hidden
         div Órgão
-            select(name="orgao")
+            select(name="orgao_controle_id")
                 option()
-                option(value="Exército") Exército
-                option(value="Polícia Federal") Polícia Federal
-
+                each orgao in orgaos
+                    option(value=orgao.id)=orgao.nome
 
     div.item
         div Informações Adicionais

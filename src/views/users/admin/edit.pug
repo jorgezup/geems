@@ -2,7 +2,7 @@ extends ../../layout.pug
 
 block content
     section.container.form
-        form(action="/user?_method=PUT" method="POST")
+        form(action="/users?_method=PUT" method="POST")
             .header
                 h3 Editar Usuário
 
@@ -13,7 +13,7 @@ block content
             button.button(type="submit") Atualizar
             
         
-        form#form-delete(action="/user?_method=DELETE" method="POST")
+        form#form-delete(action="/users?_method=DELETE" method="POST")
             input(type="hidden", name="id" value=user.id)
             button.button(type="submit") Deletar
 
