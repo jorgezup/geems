@@ -27,11 +27,11 @@ const session = require('express-session')
 const pgSession = require('connect-pg-simple')(session);
  
 const pgPool = new pg.Pool({
-  user: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT,
-  database: process.env.DATABASE_NAME
+  user: process.env.DATABASE_USERNAME || 'postgres',
+  password: process.env.DATABASE_PASSWORD || 'postgres',
+  host: process.env.DATABASE_HOST || 'localhost',
+  port: process.env.DATABASE_PORT || 5432,
+  database: process.env.DATABASE_NAME || 'geems'
 });
 
  
