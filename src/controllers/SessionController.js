@@ -3,7 +3,6 @@ const User = require('../models/User')
 const crypto = require('crypto')
 const mailer = require('../config/lib/mailer')
 const { hash } = require('bcryptjs')
-const { where } = require('sequelize')
 
 module.exports = {
     loginForm(req, res) {

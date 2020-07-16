@@ -15,6 +15,18 @@ if (process.env.DATABASE_URL) {
     });
 }
 
+// console.log(connection)
+
+// const connection = new Sequelize(process.env.DATABASE_URL, {
+//     dialect: 'postgres',
+//     ssl: true,
+//     define: {
+//         timestamps: true,
+//         underscored: true,
+//     },
+// });
+
+
 Reagente.init(connection)
 User.init(connection)
 Consumo.init(connection)
@@ -27,3 +39,4 @@ User.associate(connection.models)
 Reagente.associate(connection.models)
 
 module.exports = connection
+

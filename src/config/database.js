@@ -1,15 +1,16 @@
-console.log('process.env.DATABSE_URL :>> ', process.env.DATABASE_URL) 
 module.exports = {
     dialect: 'postgres',
-    // url:  "postgres://postgres:postgres@localhost:5432/geems",
-    host: 'localhost',
-    username: 'postgres',
-    password: 'postgres',
-    database: 'geems',
-    port: 5432,
+    host: process.env.DATABASE_HOST,
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+    port: process.env.DATABASE_PORT,
     ssl: true,
     define: {
         timestamps: true,
         underscored: true,
     },
 }
+
+
+

@@ -39,14 +39,14 @@ routes.get('/reagentes/:reagente_id/consumo', ConsumoController.find)
 routes.post('/reagentes/:reagente_id/consumo', ConsumoController.store)
 
 /* Users - Admin */
-// routes.get('/users', UserController.create)
-routes.get('/users', isAdmin, UserController.create)
+routes.get('/users', UserController.create)
+// routes.get('/users', isAdmin, UserController.create)
 routes.get('/users/list', isAdmin, UserController.index)
 routes.get('/users/:id', isAdmin, UserValidators.show, UserController.show)
 routes.get('/users/:id/edit', isAdmin, UserValidators.edit, UserController.edit)
 
-// routes.post('/users', UserController.store)
-routes.post('/users', isAdmin, UserValidators.post, UserController.store)
+routes.post('/users', UserController.store)
+// routes.post('/users', isAdmin, UserValidators.post, UserController.store)
 routes.put('/users', isAdmin, UserValidators.update, UserController.update)
 routes.delete('/users', isAdmin, UserValidators.remove, UserController.delete)
 

@@ -1,18 +1,25 @@
 // const session = require('express-session')
 // const pgSession = require('connect-pg-simple')(session)
+
 // const database = require('./database')
 
-// module.exports = session({
-//     store: new pgSession({
-//         pool:database
-//     }),
-//     secret: 'oqiwpeiisjksh',
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//         maxAge: 30 * 24 * 60 * 60 * 1000
-//     }
-// })
+// console.log(database)
+
+
+//   module.exports = session({
+//       store: new pgSession({
+//           pool:database,
+//           tableName: 'session'
+//       }),
+//       secret: 'oqiwpeiisjksh',
+//       resave: false,
+//       saveUninitialized: false,
+//       cookie: {
+//           maxAge: 30 * 24 * 60 * 60 * 1000
+//       }
+//   })
+
+
 
 
 const pg = require('pg')
@@ -20,27 +27,12 @@ const session = require('express-session')
 const pgSession = require('connect-pg-simple')(session);
  
 const pgPool = new pg.Pool({
-  user: 'postgres',
-  password: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  database: 'geems'
+  user: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  host: process.env.DATABASE_HOST,
+  port: process.env.DATABASE_PORT,
+  database: process.env.DATABASE_NAME
 });
-
-console.log('Session -> Datab')
-
-if (process.env.DATABASE_URL) {
-  module.exports = session({
-    store: new pgSession({
-      conString: process.env.DATABASE_URL,             // Connection pool
-      tableName : 'session'   // Use another table-name than the default "session" one
-    }),
-    secret: 'oqiwpeiisjksh',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
-  });
-}
 
  
 module.exports = session({
@@ -53,4 +45,22 @@ module.exports = session({
   saveUninitialized: false,
   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
 });
+
+
+// const { Pool, Client } = require('pg');
+// const connectionString = process.env.DATABASE_URL
+// const pool = new Pool({
+//   connectionString: connectionString,
+// });
+
+
+// module.exports = session({
+//   store: new pgSession({
+//     conString: process.env.DEV_DATABASE_URL
+//   }),
+//   secret: 'oqiwpeiisjksh',
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+// });
 
