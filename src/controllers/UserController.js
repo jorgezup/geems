@@ -55,7 +55,7 @@ module.exports = {
             return res.render('users/admin/send-email')
         } catch (error) {
             console.error
-            return res.render('users/admin/create', {
+            return res.render('users/admin/list', {
                 error: 'Erro inesperado'
             })
         }
@@ -67,7 +67,7 @@ module.exports = {
             return res.render('users/admin/create', {papeis})
         } catch (error) {
             console.error
-            return res.render('users/admin/create', {
+            return res.render('users/admin/list', {
                 error: 'Erro inesperado'
             })
         }
@@ -93,7 +93,7 @@ module.exports = {
             return res.render('users/admin/show', {user})
         } catch (error) {
             console.error
-            return res.render('users/admin/show', {
+            return res.render('users/admin/list', {
                 error: 'Erro inesperado'
             })
         }
@@ -118,7 +118,7 @@ module.exports = {
             return res.render('users/admin/edit', {user, papeis})
         } catch (error) {
             console.error
-            return res.render('users/admin/edit', {
+            return res.render('users/admin/list', {
                 error: 'Erro inesperado'
             })
         }
@@ -145,7 +145,7 @@ module.exports = {
             return res.redirect('users/list')
         } catch (error) {
             console.error
-            return res.render('users/admin/edit', {
+            return res.render('users/admin/list', {
                 error: 'Erro inesperado'
             })
         }
