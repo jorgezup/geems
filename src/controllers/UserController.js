@@ -41,10 +41,11 @@ module.exports = {
 
             await mailer.sendMail({
                 to: email,
-                from: 'no-replay@geems.com.br',
+                from: '"GEEMS" <no-replay@geems.com.br>',
                 subject: 'Credenciais de Acesso ao GEEMs',
                 html: `<h2>Credenciais</h2>
                 <p>Bem vindo ao GEEMs</p>
+                <p>Acesse: <a href="https://geems.herokuapp.com/" target="_blank">https://geems.herokuapp.com/</a></p>
                 <p>Seu e-mail de login: ${email}</p>
                 <p>Sua senha: ${password}</p>
                 <h4>Recomendamos que seja feita a alteração de senha.</h4>
@@ -154,6 +155,8 @@ module.exports = {
             const { id } = req.body
 
             await User.update({
+                email:"null",
+                password:"null",
                 disabled:true
             },{
                 where: { id }
@@ -162,7 +165,7 @@ module.exports = {
             return res.render('users/admin/remove-success')
         } catch (error) {
             console.error
-            return res.render('users/admin/edit', {
+            return res.render('users/admin/list', {
                 error: 'Erro inesperado'
             })
         }

@@ -31,23 +31,23 @@ async function post(req, res, next) {
 
         // Verifica e-mail
         const userEmail = await User.findOne({
-            where: { email }
-        })
-        if (userEmail) return res.render('users/admin/create', {
-            user: req.body,
-            papeis,
-            error: 'E-mail já cadastrado!'
+            where: { email },
         })
 
-        // Verifica passaporte
-        const userPassaporte = await User.findOne({
-            where: { passaporte }
-        })
-        if (userPassaporte) return res.render('users/admin/create', {
-            user: req.body,
-            papeis,
-            error: 'Passaporte já cadastrado!'
-        })
+        const users = await User.findAll({raw:true})
+
+        for (user of users) {
+            if (user.email == email && user.disabled==false) return res.render('users/admin/create', {
+                user: req.body,
+                papeis,
+                error: 'E-mail já cadastrado!'
+            })
+            if (user.passaporte == passaporte && user.disabled==false) return res.render('users/admin/create', {
+                user: req.body,
+                papeis,
+                error: 'Passaporte já cadastrado!'
+            })
+        }
 
         next()
     }

@@ -3,14 +3,12 @@ const { compare, hash } = require('bcryptjs')
 
 async function login(req, res, next) {
     const { email, password } = req.body 
-    console.log(email)
     
     const user = await User.findOne({
-        where: { email }
+        where: {email}
     })
-    console.log(req.body)
 
-    if (!user || user == null) return res.render('session/login', {
+    if (!user || user == null || user.disabled==true) return res.render('session/login', {
         user: req.body,
         error: 'Usuário não cadastrado.'
     })
@@ -31,7 +29,12 @@ async function forgotPassword(req, res, next) {
     try {
         const { email } = req.body
 
-        const user = await User.findOne({ where: { email } })
+        const user = await User.findOne({ 
+            where: { 
+                email,
+                disabled:false 
+            } 
+        })
 
         if (!user) {
             return res.render('session/forgot-password', {
@@ -51,10 +54,8 @@ async function forgotPassword(req, res, next) {
 async function resetPassword(req, res, next) {
 
     const { email, password, passwordRepeat, token } = req.body
-    console.log(req.body)
 
     const user = await User.findOne({ where: { email } })
-    // console.log(user)
 
     if (!user) {
         return res.render('session/reset-password', {
