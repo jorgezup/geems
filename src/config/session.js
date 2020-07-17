@@ -16,7 +16,7 @@ module.exports = session({
     pool : pgPool,                // Connection pool
     tableName : 'session'   // Use another table-name than the default "session" one
   }),
-  secret: 'oqiwpeiisjksh',
+  secret: '!@#$%^secret)(*&',
   resave: false,
   saveUninitialized: false,
   cookie: {
