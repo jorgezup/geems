@@ -55,7 +55,7 @@ module.exports = {
                 `
             })
 
-            return res.render('session/forgot-password', {
+            return res.render('session/login', {
                 success: "Token de recuperação enviado para seu e-mail"
             })
         } catch (error) {

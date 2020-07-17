@@ -7,7 +7,7 @@ module.exports = {
 
         let reagente = await Reagente.findByPk(reagente_id)
 
-        if(!reagente) return res.status(400).send('Reagente não encontrado!')
+        if(!reagente) return res.render('not-found')
 
         let quantidade_consumida = 0
 
@@ -30,24 +30,26 @@ module.exports = {
         return res.render('reagentes/consumo', {reagente})
     },
     async store(req, res) {
-        const { reagente_id } = req.params
-        const { quantidade_consumida } = req.body
+        try {
+            const { reagente_id } = req.params
+            const { quantidade_consumida } = req.body
 
-        console.log(reagente_id)
-        console.log(req.body)
-        console.log(req.session.userId)
+            const reagente = await Reagente.findByPk(reagente_id)
 
-        const reagente = await Reagente.findByPk(reagente_id)
+            if(!reagente) return res.render('not-found')
 
-        if(!reagente) return res.status(400).send('Reagente não encontrado!')
+            const consumo = await Consumo.create({
+                quantidade_consumida: Number(quantidade_consumida),
+                reagente_id,
+                user_id: req.session.userId
+            })
 
-        const consumo = await Consumo.create({
-            quantidade_consumida: Number(quantidade_consumida),
-            reagente_id,
-            user_id: req.session.userId
-        })
-
-        return res.redirect('/reagentes/list')
-
+            return res.redirect('/reagentes/list')
+        } catch (error) {
+            console.error
+            return res.render('reagentes/list', {
+                error: 'Erro inesperado'
+            })
+        }
     }
 }
