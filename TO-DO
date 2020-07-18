@@ -1,5 +1,5 @@
-1) Adicionar user_id na tabela do reagente
-2) Remover FK orgao_controle_id na tabela do reagente
-3) Na tabela reagente, controlado true or false
+1) Testar reset de senha
+2) criar tela de alterar senha
+3) remover .env do github
 
-1) Na tabela user, mudar reset_token e reset_token_expires para text
+*** inserir senha do email

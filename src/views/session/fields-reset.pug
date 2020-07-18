@@ -1,0 +1,27 @@
+if token
+    .item
+        input(type="hidden", name="token", value=user.token)
+    .item
+        div Email
+            div
+                input(type="email", name="email" placeholder="Digite o email" value=user.email required)
+    .item
+        div Senha
+            div
+                input(type="password", name="password" placeholder="Digite sua senha" required)
+    .item
+        div Repita a senha
+            div
+                input(type="password", name="passwordRepeat" placeholder="Repita a nova senha" required)
+
+else
+    .item
+        input(type="hidden", name="token", value=user.token)
+    .item
+        div Email
+            div
+                input(type="email", name="email" placeholder="Digite o email" value=user.email required)
+    .item
+        div Senha
+            div
+                input(type="password", name="password" placeholder="Digite sua senha" required)

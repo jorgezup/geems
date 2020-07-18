@@ -16,7 +16,7 @@ module.exports = {
             return res.render('users/admin/list', {users})
         } catch (error) {
             console.error
-            return res.render('users/admin/list', {
+            return res.render('error', {
                 error: 'Erro inesperado'
             })
         }
@@ -55,21 +55,20 @@ module.exports = {
             return res.render('users/admin/send-email')
         } catch (error) {
             console.error
-            return res.render('users/admin/list', {
+            return res.render('error', {
                 error: 'Erro inesperado'
             })
         }
     },
     async create(req, res){
         try {
+            console.log('aqui')
             const papeis = await Papel.findAll({raw:true})
             
             return res.render('users/admin/create', {papeis})
         } catch (error) {
             console.error
-            return res.render('users/admin/list', {
-                error: 'Erro inesperado'
-            })
+            return res.render('error')
         }
     },
     async show(req, res){
@@ -93,9 +92,7 @@ module.exports = {
             return res.render('users/admin/show', {user})
         } catch (error) {
             console.error
-            return res.render('users/admin/list', {
-                error: 'Erro inesperado'
-            })
+            return res.render('error')
         }
     },
     async edit(req, res){
@@ -118,7 +115,7 @@ module.exports = {
             return res.render('users/admin/edit', {user, papeis})
         } catch (error) {
             console.error
-            return res.render('users/admin/list', {
+            return res.render('error', {
                 error: 'Erro inesperado'
             })
         }
@@ -145,7 +142,7 @@ module.exports = {
             return res.redirect('users/list')
         } catch (error) {
             console.error
-            return res.render('users/admin/list', {
+            return res.render('error', {
                 error: 'Erro inesperado'
             })
         }
@@ -165,7 +162,7 @@ module.exports = {
             return res.render('users/admin/remove-success')
         } catch (error) {
             console.error
-            return res.render('users/admin/list', {
+            return res.render('error', {
                 error: 'Erro inesperado'
             })
         }

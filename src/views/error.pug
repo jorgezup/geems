@@ -1,26 +1,28 @@
-extends ../../layout.pug
+extends ./layout.pug
 
 block content
     section.container.form.card
-        .success-lottie
+        .error-lottie
         div
-            h3 Conta removida com sucesso!
+            h3 Erro Inesperado!
+
+            h3 Caso persista o erro, entre em contato com o administrador.
 
         .center
-            a(href="/users/list" onclick="/users/list") Voltar
+            a(href="/" onclick="/") Home Page
     
     script(src='/lottie.min.js')
 
     script. 
-        const element = document.querySelector('.success-lottie')
+        const element = document.querySelector('.error-lottie')
 
         lottie.loadAnimation({
             container: element, // the dom element that will contain the animation
             renderer: 'svg',
             loop: false,
             autoplay: true,
-            path: '/782-check-mark-success.json' // the path to the animation json
+            path: '/11124-error-icon.json' // the path to the animation json
         });
         setTimeout(() => {
-            window.location.href = '/users/list'
+            window.location.href = '/'
         },3200)
