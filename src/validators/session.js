@@ -33,7 +33,9 @@ async function forgotPassword(req, res, next) {
             where: { email } 
         })
 
-        if (!user && user.disabled==false) {
+        console.log(user)
+
+        if (!user || user.disabled==true) {
             return res.render('session/forgot-password', {
                 user: req.body,
                 error: "E-mail não cadastrado."
