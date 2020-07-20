@@ -48,7 +48,7 @@ module.exports = {
                 html: `<h2>Token de Recuperação</h2>
                 <p>Clique no link para recuperar sua senha.</p>
                 <p>
-                    <a href="http://localhost:3000/conta/reset-senha?token=${token}" target="_blank">
+                    <a href="https://geems.herokuapp.com/conta/reset-senha?token=${token}" target="_blank">
                         RECUPERAR SENHA
                     </a>
                 </p>
