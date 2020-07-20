@@ -1,6 +1,9 @@
 const User = require('../models/User');
 const Papel = require('../models/Papel');
 
+const { hash } = require('bcryptjs')
+
+
 module.exports = {
     async index(req, res) {
         const user = await User.findByPk(req.session.userId, {
@@ -9,8 +12,6 @@ module.exports = {
         })
 
         const papeis = await Papel.findAll({raw:true})
-
-        console.log(user)
 
         return res.render('users/edit', {user, papeis})
     },
@@ -27,6 +28,31 @@ module.exports = {
         },{
             where: { id }
         })
+
+        return res.render('users/update-success')
+    },
+    async changePasswordForm(req, res) {
+        const user = await User.findByPk(req.session.userId, {raw:true})
+
+        return res.render('users/change-password', {user})
+    },
+    async changePassword(req, res) {
+        const { id, password, passwordRepeat } = req.body
+
+        const passed = password == passwordRepeat
+
+        if (!passed) {
+            return res.render('users/change-password', {
+                user:req.body,
+                error: "Senhas não coincidem"
+            })
+        }
+
+        const passwordHash = await hash(password, 8)
+
+        const user = await User.update({
+            password:passwordHash
+        }, { where: {id}})
 
         return res.render('users/update-success')
     }

@@ -5,6 +5,8 @@ block content
         form(action="/conta?_method=PUT" method="POST")
             .header
                 h3 Meus Dados
+                button#changePass(onclick='window.location.href="/conta/alterar-senha"')
+                    a(href="/conta/alterar-senha") Alterar Senha
 
             .fields
                 include ./fields

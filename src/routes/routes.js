@@ -50,7 +50,10 @@ routes.delete('/users', isAdmin, UserValidators.remove, UserController.delete)
 
 /* Users - MyAccount */
 routes.get('/conta', AccountController.index)
+routes.get('/conta/alterar-senha', AccountController.changePasswordForm)
+
 routes.put('/conta', AccountController.update)
+routes.put('/conta/alterar-senha', AccountController.changePassword)
 
 
 /* Users - Resets */
@@ -62,7 +65,7 @@ routes.post('/conta/reset-senha', SessionValidators.resetPassword, SessionContro
 
 
 /* Login e Logout */
-routes.get('/login', SessionController.loginForm)
+routes.get('/login', isLoggedRedirect, SessionController.loginForm)
 routes.post('/login', SessionValidators.login, SessionController.login)
 routes.post('/logout', SessionController.logout)
 

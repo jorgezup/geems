@@ -30,13 +30,10 @@ async function forgotPassword(req, res, next) {
         const { email } = req.body
 
         const user = await User.findOne({ 
-            where: { 
-                email,
-                disabled:false 
-            } 
+            where: { email } 
         })
 
-        if (!user) {
+        if (!user && user.disabled==false) {
             return res.render('session/forgot-password', {
                 user: req.body,
                 error: "E-mail não cadastrado."
