@@ -24,3 +24,12 @@ div.item
                     else    
                         option(value=papel.id)=papel.nome
 
+.item#administrador
+    div Administrador
+    if user.is_admin
+        div
+            input(type="checkbox", name="is_admin" value="true" checked)
+    else
+        div
+            input(type="checkbox", name="is_admin" value="true")
+

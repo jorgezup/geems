@@ -42,10 +42,10 @@ module.exports = {
             )
 
             await mailer.sendMail({
+                from: '"GEEMS" <jorge_bertolo@hotmail.com>',
                 to: user.email,
-                from: 'no-replay@geems.com.br',
                 subject: 'Recuperação de Senha',
-                html: `<h2>Token de Recuperação</h2>
+                html: `<h2>Token de Recuperação de Senha</h2>
                 <p>Clique no link para recuperar sua senha.</p>
                 <p>
                     <a href="https://geems.herokuapp.com/conta/reset-senha?token=${token}" target="_blank">
