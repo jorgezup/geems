@@ -25,28 +25,28 @@ routes.get('/', onlyUsers, (req, res) => {
 routes.get('/reagentes/search', onlyUsers, ReagenteController.index)
 
 /* Reagentes */
-routes.get('/reagentes/list', ReagenteController.index)
-routes.get('/reagentes', ReagenteController.create)
-routes.get('/reagentes/:id', ReagenteValidators.show, ReagenteController.find)
+routes.get('/reagentes/list', onlyUsers, ReagenteController.index)
+routes.get('/reagentes', onlyUsers, ReagenteController.create)
+routes.get('/reagentes/:id', onlyUsers, ReagenteValidators.show, ReagenteController.find)
 routes.get('/reagentes/:id/edit', onlyUsers, ReagenteController.edit)
 
-routes.post('/reagentes', ReagenteValidators.post, ReagenteController.store)
-routes.put('/reagentes', ReagenteController.update)
-routes.delete('/reagentes', ReagenteController.delete)
+routes.post('/reagentes', onlyUsers, ReagenteValidators.post, ReagenteController.store)
+routes.put('/reagentes', onlyUsers, ReagenteController.update)
+routes.delete('/reagentes', onlyUsers, ReagenteController.delete)
 
 /* Consumo */
-routes.get('/reagentes/:reagente_id/consumo', ConsumoController.find)
-routes.post('/reagentes/:reagente_id/consumo', ConsumoController.store)
+routes.get('/reagentes/:reagente_id/consumo', onlyUsers, ConsumoController.find)
+routes.post('/reagentes/:reagente_id/consumo', onlyUsers, ConsumoController.store)
 
 /* Users - Admin */
-routes.get('/users', isAdmin, UserController.create)
-routes.get('/users/list', isAdmin, UserController.index)
-routes.get('/users/:id', isAdmin, UserValidators.show, UserController.show)
-routes.get('/users/:id/edit', isAdmin, UserValidators.edit, UserController.edit)
+routes.get('/users', onlyUsers, isAdmin, UserController.create)
+routes.get('/users/list', onlyUsers, isAdmin, UserController.index)
+routes.get('/users/:id', onlyUsers, isAdmin, UserValidators.show, UserController.show)
+routes.get('/users/:id/edit', onlyUsers, isAdmin, UserValidators.edit, UserController.edit)
 
-routes.post('/users', isAdmin, UserValidators.post, UserController.store)
-routes.put('/users', isAdmin, UserValidators.update, UserController.update)
-routes.delete('/users', isAdmin, UserValidators.remove, UserController.delete)
+routes.post('/users', onlyUsers, isAdmin, UserValidators.post, UserController.store)
+routes.put('/users', onlyUsers, isAdmin, UserValidators.update, UserController.update)
+routes.delete('/users', onlyUsers, isAdmin, UserValidators.remove, UserController.delete)
 
 /* Users - MyAccount */
 routes.get('/conta', AccountController.index)

@@ -22,9 +22,9 @@ header
                     a(href="/conta")
                         i.material-icons account_circle
                         | Minha Conta
-                    ul.dropdown
-                        li
-                            form(action="/logout", method="post") 
-                                button 
-                                    i.material-icons login
-                                    | Sair
+            .dropdown
+                button.dropbtn(onclick="logout()") 
+                    i.material-icons#dropIcon keyboard_arrow_down
+                .dropdown-content#myDropdown
+                    form(action="/logout", method="post")
+                        button(type="submit") Sair

@@ -451,6 +451,10 @@ form .item textarea {
     cursor: pointer; 
 }
 
+.container .title button#new-user:hover {
+    background-color: var(--primary-color-hover);
+}
+
 .container .title button#new-user a{
     font-size: 1.6rem;
     font-weight: bold;
@@ -464,7 +468,7 @@ section.container.form {
     position: relative;
 }
 
-.fields-show .item > div:nth-child(1) {
+.fields-show .item > div {
     color: #999999;
     text-transform: uppercase;
     font-size: 1.4rem;
@@ -474,9 +478,9 @@ section.container.form {
     border-bottom: 1px solid #efefef;
 }
 
-.fields-show .item > div:nth-child(1) >div {
+.fields-show .item > div > div {
     color: black;
-    text-transform: uppercase;
+    text-transform: initial;
     font-size: 1.4rem;
     font-weight: bold;
     
@@ -496,7 +500,8 @@ section.container.form {
 }
 
 .item#nome,
-td#nome {
+td#nome,
+div#nome {
     text-transform: capitalize;
 }
 

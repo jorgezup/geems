@@ -150,3 +150,14 @@ const Validate = {
     }
 }
 
+function logout() {
+    document.querySelector('#myDropdown').classList.toggle('show')
+}
+
+window.onclick = function(event) {
+    const dropbtn  = document.querySelector('.dropdown > button > i')
+    const myDropdown = document.querySelector('#myDropdown')
+    if(event.target != dropbtn){
+        myDropdown.classList.remove('show')
+    }
+}

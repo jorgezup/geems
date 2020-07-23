@@ -74,18 +74,24 @@ body header .container-header.site{
 .container-header .menu-header {
     grid-area: menu;
 
-    margin-left: auto;
+    /*margin-left: auto;*/
     justify-self: center;
     align-self: center;
     /* justify-self: right; */
-}
-
-.container-header.site .menu-header {
     display: inline-flex;
 }
 
+.container-header.site .menu-header {
+    /* display: inline-flex; */
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
 .container-header.site .menu-header .itens:first-of-type{
-    margin-right: 32px;
+    margin-left: 8px;
+    margin-right: 24px; 
 }
 
 
@@ -108,48 +114,7 @@ body header .container-header.site{
     color: lightgray;
 }
 
-.container-header .menu-header a i{
-    margin-right: 4px;
-}
 
-ul li ul.dropdown {
-    min-width: 125px;
-    display: none;
-    position: absolute;
-    z-index: 999;
-}
-
-ul li:hover ul.dropdown {
-    display: block;
-    position: absolute;
-}
-
-ul li ul.dropdown li {
-    display: block;
-}
-
-ul li ul.dropdown li button {
-    cursor: pointer;
-
-    font-size: 1.6rem;
-    color: white;
-
-    background-color: var(--primary-color);
-
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-ul li ul.dropdown li button i{
-    margin-right: 4px;
-}
-
-ul li ul.dropdown li button:hover {
-    color: lightgray;
-}
 
 /* Ocultar form and button */
 .container-header .hidden {
@@ -158,6 +123,46 @@ ul li ul.dropdown li button:hover {
     visibility: hidden;
 }
 
+.dropbtn {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}
 
+.dropbtn:hover, .dropbtn:focus {
+    background-color: var(--primary-color-hover);
+}
 
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    margin-right: auto;
+}
+
+.dropdown-content button {
+    background-color: var(--primary-color);
+    color: white;
+    margin-top: 4px;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+.dropdown-content button:hover {
+    color: lightgray;
+}
+
+.container-header.site .show {
+    display: block;
+    margin-left: -10px;
+}
+
+.container-header .show {
+    display: block;
+}

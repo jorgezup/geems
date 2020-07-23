@@ -19,7 +19,7 @@ block content
                         div#quantidade=(reagente.quantidade_final)
                 div.item 
                     div Consumo
-                        input#registrar-consumo(type="number", name="quantidade_consumida", placeholder="Insira o valor do consumo do reagente")
+                        input#registrar-consumo(type="number", name="quantidade_consumida", placeholder="Insira o valor do consumo do reagente" step="0.0001" min="0.0001" max="100000")
             
             button.button#consumo(type="submit" onclick="Validate.consumo(event)") Cadastrar Consumo
 

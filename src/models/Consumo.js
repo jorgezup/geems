@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize')
 class Consumo extends Model {
     static init(sequelize) {
         super.init({
-            quantidade_consumida: DataTypes.INTEGER,
+            quantidade_consumida: DataTypes.FLOAT,
         }, {
             sequelize
         })

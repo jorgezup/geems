@@ -10,7 +10,7 @@ class Reagente extends Model {
             lote: DataTypes.TEXT,
             validade: DataTypes.DATE,
             estado: DataTypes.ENUM({values: ['sólido', 'líquido']}),
-            quantidade: DataTypes.INTEGER,
+            quantidade: DataTypes.FLOAT,
             incompatibilidade: DataTypes.TEXT,
             controlado: DataTypes.BOOLEAN,
             orgao_controle_id: DataTypes.INTEGER,
