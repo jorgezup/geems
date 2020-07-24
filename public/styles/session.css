@@ -81,3 +81,30 @@ section.login .botoes a:hover{
     color: var(--primary-color);
     font-weight: bold;
 }
+
+@media (max-width:520px) {
+    .session-container{
+        margin: auto 0;
+    }
+    .logo--login {
+        width: 100%;
+    }
+
+    .logo--login img {
+        width: 75%;
+    }
+
+    .logo--login .titulo--login h2{
+        font-size: 3.2rem;
+    }
+    
+    .logo--login .titulo--login p{
+        font-size: 1.4rem;
+    }
+
+    section.container.form.login {
+        width: 100%;
+        max-width: initial;
+    }
+
+}
