@@ -2,11 +2,11 @@ const currentPage = location.pathname
 const header = document.querySelector("header div.container-header")
 /* Adiciona a classe active conforme a página que está */
 const inputForm = document.querySelector(".container-header form > input")
-const newReagente = document.querySelector('.menu-header ul.itens')
+const buttonForm = document.querySelector(".container-header form > button")
 if(currentPage == '/') {
     header.classList.remove('site')
     inputForm.classList.add('hidden')
-    newReagente.classList.add('hidden')
+    buttonForm.classList.add('hidden')
 }
 
 // const start = new Date;
@@ -161,3 +161,17 @@ window.onclick = function(event) {
         myDropdown.classList.remove('show')
     }
 }
+
+function verifyWidth(width) {
+    if(width.matches) {
+        if((currentPage.toString().includes('reagentes/list')) || (currentPage.toString().includes('reagentes/search'))){
+            const divContainer = document.querySelector('.container')
+            const divSearch = document.querySelector('.search-header')
+            divContainer.insertBefore(divSearch, divContainer.firstChild)
+        }
+    }
+}
+
+const width = window.matchMedia("(max-width:860px)")
+verifyWidth(width)
+width.addEventListener(verifyWidth)

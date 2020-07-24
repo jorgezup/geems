@@ -4,31 +4,31 @@ block content
     .container
         .title
             h2 Listagem dos Usuários
-            button#new-user(onclick='window.location.href="/users"')
-                a(href="/users") Novo Usuário
-        table.content-table
+            a.button(href="/users") Novo Usuário
+
+        table#users
             thead
                 tr
-                    td Nome
+                    th Nome
                         button.asc( value="nome" onclick="verificaOrder(this)")
                             i.material-icons keyboard_arrow_down
                         button( value="nome" onclick="verificaOrder(this)")
                             i.material-icons keyboard_arrow_up
                             
-                    td Email
+                    th Email
                         button.asc( value="email" onclick="verificaOrder(this)")
                             i.material-icons keyboard_arrow_down
                         button( value="email" onclick="verificaOrder(this)")
                             i.material-icons keyboard_arrow_up
 
-                    td Administrador
+                    th Administrador
                         button.asc( value="is_admin" onclick="verificaOrder(this)")
                             i.material-icons keyboard_arrow_down
                         button( value="is_admin" onclick="verificaOrder(this)")
                             i.material-icons keyboard_arrow_up
 
 
-                    td Ação
+                    th Ação
                     
             tbody
             each user in users

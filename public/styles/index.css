@@ -2,7 +2,7 @@ main.container-main__buttons {
     /* width: 700px; */
     /* display: flex; */
     /* flex-direction: row; */
-    margin: auto;
+    margin: auto auto 0 auto;
 }
 
 main.container-main__buttons .actions {
@@ -41,4 +41,18 @@ main.container-main__buttons .actions button a{
     word-break: normal;
     
     color: white;
+}
+
+@media (max-width: 768px) {
+    main.container-main__buttons .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 20px;
+    }
+    main.container-main__buttons .actions button{
+        margin-right: initial;
+        height: 170px;
+    }
+
 }

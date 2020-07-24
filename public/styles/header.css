@@ -5,7 +5,7 @@ body header .container-header.site{
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1.5fr 0.5fr;
     grid-template-areas: ". logo menu";
 }
 
@@ -14,7 +14,7 @@ body header .container-header.site{
 }
 
 .logo-header {
-    /* margin-left: auto; */
+    margin-right: auto;
     grid-area: logo;
 
     display: inline-flex;
@@ -51,17 +51,23 @@ body header .container-header.site{
 }
 
 /* Header Search */
-.container-header.site form {
+.search-header {
+    width: 100%;
+    grid-area: search;
+    display: flex;
+    justify-content: center;
+}
+
+.container-header.site form.search {
     align-self: center;
-    /* justify-self: center; */
-    /* width: 100%; */
+    justify-self: center; 
+    width: 90%;
     margin-left: 10px;
+    display: inline-flex;
 }
 
 
 .search input {
-    grid-area: search;
-
     width: 100%;
 
     padding: 0.8rem 1.6rem;
@@ -70,11 +76,20 @@ body header .container-header.site{
     font-size: 1.6rem;
 }
 
+.search button {
+    background-color: var(--primary-color);
+    color: white;
+
+    border: 1px solid var(--primary-color-hover);
+    border-radius: 4px;
+}
+
 /* Menu Novo Reagente e Minha conta */
 .container-header .menu-header {
     grid-area: menu;
 
-    /*margin-left: auto;*/
+    margin-left: auto;
+    margin-right: 10px;
     justify-self: center;
     align-self: center;
     /* justify-self: right; */
@@ -83,17 +98,11 @@ body header .container-header.site{
 
 .container-header.site .menu-header {
     /* display: inline-flex; */
-    margin-left: 0;
-    width: 100%;
+    margin-left: auto;
+    margin-right: 10px;
     display: flex;
     flex-direction: row;
 }
-
-.container-header.site .menu-header .itens:first-of-type{
-    margin-left: 8px;
-    margin-right: 24px; 
-}
-
 
 .container-header .menu-header a{
     display: flex;
@@ -158,11 +167,80 @@ body header .container-header.site{
     color: lightgray;
 }
 
-.container-header.site .show {
+.container-header .show, 
+.container-header.site .show { 
     display: block;
-    margin-left: -10px;
 }
 
-.container-header .show {
-    display: block;
+
+
+@media (max-width: 940px) {
+    body header .container-header,
+    body header .container-header.site {
+        width: initial;
+        max-width: initial;
+        grid-template-areas: ". logo menu";
+        grid-template-columns: 0.5fr 1fr 0.6fr;
+    }
+
+    .container-header .logo-header,
+    .container-header.site .logo-header {
+        margin-right: initial;
+    }
+
+    .container-header .menu-header {
+        margin-left: initial;
+        margin-right: initial;
+    }
+    .container-header.site form.search {
+        display: none;
+        visibility: hidden;
+    }
+
+    .search-header {
+        margin-top: 12px;
+    }
+    
+    .search-header form {
+        display: inline-flex;
+        width: 100%;
+    }
+
+    .search-header form input {
+        border: 1px solid #ddd;
+        margin-right: 2px;
+    }
+}
+
+@media (max-width: 860px) {
+    body header .container-header, 
+    body header .container-header.site {
+    }
+}
+
+/* @media (max-width: 722px) {
+    body header .container-header.site{
+        grid-template-columns: initial;
+    }
+
+
+} */
+
+@media (max-width:634px) {
+    body header .container-header,
+    body header .container-header.site{
+        grid-template-columns: initial;
+    }
+
+    .imagem-header {
+        display: none;
+        visibility: hidden;
+    }
+
+    .imagem-header img{
+        display: none;
+        visibility: hidden;
+    }
+
+
 }

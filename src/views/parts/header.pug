@@ -7,16 +7,19 @@ header
                 h2 GEEMs
                 p Controle de Reagentes
 
-        form(action="/reagentes/search" method="GET" class="search")
-            input(
-                type="text", name="filter", placeholder="Buscar por reagente")
+        .search-header
+            form(action="/reagentes/search" method="GET" class="search")
+                input(
+                    type="text", name="filter", placeholder="Buscar por reagente")
+                button
+                    i.material-icons search
 
         .menu-header
-            ul.itens
-                li
-                    a(href="/reagentes")
-                        i.material-icons add
-                        | Novo Reagente
+            //- ul.itens
+            //-     li
+            //-         a(href="/reagentes")
+            //-             i.material-icons add
+            //-             | Novo Reagente
             ul.itens
                 li
                     a(href="/conta")

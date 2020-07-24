@@ -343,59 +343,56 @@ form .item textarea {
 
 
 /* Table - list all */
-.content-table {
+/* .content-table {
     border-collapse: collapse;
     margin: 30px auto;
     font-size: 1.4rem;
     width: 100%;
-    min-width: 400px;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
+} */
 
-.content-table thead tr {
+/* .content-table thead tr {
     background-color: var(--primary-color);
     color: white;
 
     font-size: 1.8rem;
     font-weight: bold;
-    /* text-align: left; */
-}
+} */
 
-.content-table th,
+/* .content-table th,
 .content-table td {
     padding: 1.2rem 1.5rem;
     text-align: center;
-}
+} */
 
 
-.content-table tbody tr {
+/* .content-table tbody tr {
     border-bottom: 1px solid #dddddd;
-}
+} */
 
-.content-table tbody tr:nth-of-type(even) {
+/* .content-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
-}
+} */
 
-.content-table tbody tr:last-of-type {
+/* .content-table tbody tr:last-of-type {
     border-bottom: 2px solid var(--primary-color);
-}
+} */
 
-.content-table tbody tr td:last-of-type {
+/* .content-table tbody tr td:last-of-type {
     display: flex;
     flex-direction: column;
 
-}
+} */
 
-.content-table tbody tr td:last-of-type a{
+/* .content-table tbody tr td:last-of-type a{
     display: flex;
     align-self: center;
-    /* justify-self: center; */
     color: #777;
-}
+} */
 
-.content-table tbody tr td:last-of-type a:hover {
+/* .content-table tbody tr td:last-of-type a:hover {
     color: black;
 }
 
@@ -406,20 +403,20 @@ form .item textarea {
 
 .content-table tbody td a i:hover {
     color: black;
-}
+} */
 
-.content-table thead td button {
+/* .content-table thead th button {
     background-color: unset;
-}
+} */
 
-.content-table thead td button i {
+/* .content-table thead th button i {
     font-size: 1.4rem;
     color: white;
 }
 
-.content-table thead td button i:hover {
+.content-table thead th button i:hover {
     color: lightgray;
-}
+} */
 
 .container .title {
     display: flex;
@@ -435,32 +432,12 @@ form .item textarea {
     color: #777;
     font-weight: bold;
     font-size: 2.4rem;
-    letter-spacing: 1px;
+    letter-spacing: 0.06rem;
     margin-right: auto;
 }
 
-.container .title button#new-user {
-    padding: 4px 16px;
-    height: 50px;
-    
-    margin-left: auto;
-    border-radius: 8px;
-
-    background-color: var(--primary-color);
-
-    cursor: pointer; 
-}
-
-.container .title button#new-user:hover {
-    background-color: var(--primary-color-hover);
-}
-
-.container .title button#new-user a{
-    font-size: 1.6rem;
-    font-weight: bold;
-    font-family: 'Roboto';
-    color: white;
-
+.container .title a.button {
+    width: initial;
 }
 
 /* Show Page */
@@ -506,8 +483,7 @@ div#nome {
 }
 
 .item#email,
-.item#passaporte,
-td#email {
+.item#passaporte {
     text-transform: lowercase;
 }
 
@@ -546,6 +522,35 @@ div.pagination {
 .pagination a:hover {
     filter: brightness(0.3);
     border-bottom: 1px solid var(--primary-color);
+}
+
+
+@media (max-width:490px) {
+    .container .title h2 {
+        font-size: 2.2rem;
+        letter-spacing: 0.01rem;
+    }
+
+    form .item input[type="date"] {
+        width: 100%;
+    }
+
+    .container .title a.button {
+        font-size: 1.4rem;
+    }
+
+}
+
+@media (max-width:402px) {
+    .container .title h2 {
+        font-size: 2rem;
+    }
+    .container .title a.button {
+        padding: 8px 12px;
+    }
+    form .item input::placeholder {
+        font-size: 1.4rem;
+    }
 }
 
 
