@@ -14,6 +14,10 @@ if (process.env.DATABASE_URL) {
         dialect: 'postgres',
 
         /* Added to fix Heroku pg_hba.conf error */
+        logging: true,
+        dialectOptions: {
+            ssl: true
+        }
     });
 }
 
