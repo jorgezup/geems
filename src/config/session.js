@@ -7,7 +7,10 @@ const pgPool = new pg.Pool({
   password: process.env.DATABASE_PASSWORD || 'postgres',
   host: process.env.DATABASE_HOST || 'localhost',
   port: process.env.DATABASE_PORT || 5432,
-  database: process.env.DATABASE_NAME || 'geems'
+  database: process.env.DATABASE_NAME || 'geems',
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 let hour = 3600000
