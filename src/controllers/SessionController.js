@@ -42,7 +42,7 @@ module.exports = {
             )
 
             await mailer.sendMail({
-                from: '"GEEMS" <jorge_bertolo@hotmail.com>',
+                from: '"GEEMS" <jorgebertolo@gmail.com>',
                 to: user.email,
                 subject: 'Recuperação de Senha',
                 html: `<h2>Token de Recuperação de Senha</h2>

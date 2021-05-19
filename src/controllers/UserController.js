@@ -40,7 +40,7 @@ module.exports = {
             })
 
             await mailer.sendMail({
-                from: '"GEEMS" <jorge_bertolo@hotmail.com>',
+                from: '"GEEMS" <jorgebertolo@gmail.com>',
                 to: email,
                 subject: 'Credenciais de Acesso ao GEEMs',
                 html: `<h2>Credenciais</h2>
