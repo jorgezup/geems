@@ -9,7 +9,7 @@ const pgPool = new pg.Pool({
   port: process.env.DATABASE_PORT || 5432,
   database: process.env.DATABASE_NAME || 'geems',
   ssl: {
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
   }
 });
 
