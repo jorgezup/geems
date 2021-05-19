@@ -12,6 +12,15 @@ const connection = new Sequelize(dbConfig)
 if (process.env.DATABASE_URL) {
     const connection = new Sequelize(process.env.DATABASE_URL, {
         dialect: 'postgres',
+
+        /* Added to fix Heroku pg_hba.conf error */
+        logging: true,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        }
     });
 }
 

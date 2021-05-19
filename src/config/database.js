@@ -5,9 +5,7 @@ module.exports = {
     password: process.env.DATABASE_PASSWORD || 'postgres',
     database: process.env.DATABASE_NAME || 'geems',
     port: process.env.DATABASE_PORT || '5432',
-    ssl: {
-        rejectUnauthorized: false
-    },
+    ssl: process.env.DATABASE_SSL,
     define: {
         timestamps: true,
         underscored: true,
