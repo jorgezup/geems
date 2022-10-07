@@ -1,6 +1,6 @@
-require('dotenv').config
+require("dotenv").config;
 
-const nodemailer = require('nodemailer')
+const nodemailer = require("nodemailer");
 
 // const transporter = nodemailer.createTransport({
 //     service: 'gmail',
@@ -21,16 +21,25 @@ const nodemailer = require('nodemailer')
 //     },
 //   });
 
-let transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    type: 'OAuth2',
-    user: process.env.MAIL_USERNAME,
-    pass: process.env.MAIL_PASSWORD,
-    clientId: process.env.OAUTH_CLIENTID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    refreshToken: process.env.OAUTH_REFRESH_TOKEN
-  }
-});  
+// let transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     type: 'OAuth2',
+//     user: process.env.MAIL_USERNAME,
+//     pass: process.env.MAIL_PASSWORD,
+//     clientId: process.env.OAUTH_CLIENTID,
+//     clientSecret: process.env.OAUTH_CLIENT_SECRET,
+//     refreshToken: process.env.OAUTH_REFRESH_TOKEN
+//   }
+// });
 
-module.exports = transporter
+const transporter = nodemailer.createTransport({
+  host: "smtp.mailtrap.io",
+  port: 2525,
+  auth: {
+    user: process.env.MAIL_TRAP_USER,
+    pass: process.env.MAIL_TRAP_PASSWORD,
+  },
+});
+
+module.exports = transporter;
