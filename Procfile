@@ -1,3 +1,3 @@
 web: yarn sequelize db:migrate
 web: yarn sequelize db:seed:all
-web: yarn start
+web: npm start
